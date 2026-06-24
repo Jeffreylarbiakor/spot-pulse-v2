@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spot Pulse — Developer Handoff</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Mulish:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green-700:#004C28; --green-500:#006B38; --green-50:#E8F4EC;
+  --blue-700:#135A7C; --blue-400:#2BA8DB; --blue-50:#E8F6FC;
+  --amber-700:#8A5208; --amber-500:#D98512; --amber-50:#FEF6E8;
+  --danger:#C7402F; --danger-50:#FBEAE7;
+  --ink-900:#1C1C1C; --ink-800:#2D2D2D; --ink-700:#424242; --ink-500:#787878;
+  --ink-300:#C7C7C5; --ink-200:#E4E3DF; --ink-100:#F1F0EC; --ink-50:#F8F7F3; --paper:#FBFAF6; --white:#fff;
+  --font-display:'Plus Jakarta Sans',sans-serif; --font-body:'Mulish',sans-serif; --font-mono:'Space Mono',monospace;
+}
+*{box-sizing:border-box}
+body{margin:0; background:var(--paper); color:var(--ink-800); font-family:var(--font-body); line-height:1.5;}
+.wrap{max-width:1180px; margin:0 auto; padding:40px clamp(20px,4vw,48px) 64px;}
+header.hd{margin-bottom:28px}
+.eyebrow{font-family:var(--font-display); font-weight:800; font-size:12px; text-transform:uppercase; letter-spacing:.14em; color:var(--green-500);}
+h1{font-family:var(--font-display); font-weight:800; font-size:clamp(28px,4vw,40px); letter-spacing:-.02em; color:var(--ink-900); margin:8px 0 6px;}
+.lede{font-size:15px; color:var(--ink-500); max-width:70ch; margin:0;}
+.grid{display:grid; grid-template-columns:repeat(12,1fr); gap:18px;}
+.panel{background:var(--white); border:1px solid var(--ink-200); border-radius:18px; box-shadow:0 2px 6px rgba(28,28,28,.06); padding:20px 22px;}
+.panel h2{font-family:var(--font-display); font-weight:800; font-size:14px; text-transform:uppercase; letter-spacing:.1em; color:var(--ink-700); margin:0 0 14px; display:flex; align-items:center; gap:8px}
+.panel h2 .n{width:22px;height:22px;border-radius:50%; background:var(--green-50); color:var(--green-700); font-size:11px; display:inline-flex; align-items:center; justify-content:center; font-weight:800}
+.col-4{grid-column:span 4} .col-5{grid-column:span 5} .col-6{grid-column:span 6} .col-7{grid-column:span 7} .col-8{grid-column:span 8} .col-12{grid-column:span 12}
+@media(max-width:780px){ [class^=col-]{grid-column:span 12 !important} }
+
+/* swatches */
+.sw-row{display:flex; gap:10px; flex-wrap:wrap}
+.sw{flex:1 1 130px; border-radius:12px; overflow:hidden; border:1px solid var(--ink-200)}
+.sw .chip{height:54px}
+.sw .meta{padding:8px 10px; background:var(--white)}
+.sw .meta .nm{font-family:var(--font-display); font-weight:700; font-size:12px; color:var(--ink-900)}
+.sw .meta .vr{font-family:var(--font-mono); font-size:10.5px; color:var(--ink-500)}
+.sw .meta .tok{font-family:var(--font-mono); font-size:10px; color:var(--green-700); margin-top:2px}
+
+table{width:100%; border-collapse:collapse; font-size:13px}
+th,td{text-align:left; padding:7px 8px; border-bottom:1px solid var(--ink-100); vertical-align:top}
+th{font-family:var(--font-display); font-weight:700; font-size:11px; text-transform:uppercase; letter-spacing:.07em; color:var(--ink-500)}
+td.mono,.mono{font-family:var(--font-mono); font-size:12px; color:var(--ink-900)}
+td .tag{font-family:var(--font-mono); font-size:11px; color:var(--green-700)}
+
+.spec{font-size:13px}
+.spec .row{display:flex; gap:10px; padding:6px 0; border-bottom:1px dashed var(--ink-200)}
+.spec .row:last-child{border-bottom:none}
+.spec .k{font-family:var(--font-display); font-weight:700; min-width:108px; color:var(--ink-700); font-size:12px}
+.spec .v{font-family:var(--font-mono); font-size:11.5px; color:var(--ink-900)}
+.derived{display:inline-block; font-family:var(--font-display); font-weight:700; font-size:10px; text-transform:uppercase; letter-spacing:.08em; color:var(--amber-700); background:var(--amber-50); padding:3px 8px; border-radius:999px; margin-left:8px}
+
+pre{margin:10px 0 0; background:var(--ink-900); color:#E8F4EC; border-radius:12px; padding:14px 16px; overflow:auto; font-family:var(--font-mono); font-size:11.5px; line-height:1.6}
+pre .c{color:#86b89e}
+.note{font-size:12px; color:var(--ink-500); margin-top:10px}
+.rag-line{display:flex; align-items:center; gap:8px; font-size:12.5px; margin:5px 0; font-family:var(--font-body)}
+.rag-line .dot{width:11px;height:11px;border-radius:50%}
+.footer{margin-top:28px; font-size:11px; color:var(--ink-400); text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hd">
+    <div class="eyebrow">Developer handoff · one sheet · build: Option A (bottom tab bar)</div>
+    <h1>Spot Pulse — tokens &amp; component specs</h1>
+    <p class="lede">Every value below is transcribed from the EduSpots design system as used in the finalised production build. Navigation is locked to the <b>bottom tab bar with a raised Check-in action</b> (§10); the dashboard reads <b>live per-month figures</b> from each Spot's trend data (§11). Copy the <span class="mono">:root</span> block straight into a hand-coded HTML file.</p>
+  </header>
+
+  <div class="grid">
+
+    <!-- COLOURS -->
+    <section class="panel col-8">
+      <h2><span class="n">1</span> Colour tokens (hex)</h2>
+      <div class="sw-row" style="margin-bottom:10px">
+        <div class="sw"><div class="chip" style="background:#006B38"></div><div class="meta"><div class="nm">Spot Green</div><div class="vr">#006B38</div><div class="tok">--green-500</div></div></div>
+        <div class="sw"><div class="chip" style="background:#2BA8DB"></div><div class="meta"><div class="nm">Sky Blue</div><div class="vr">#2BA8DB</div><div class="tok">--blue-400</div></div></div>
+        <div class="sw"><div class="chip" style="background:#D98512"></div><div class="meta"><div class="nm">Sunrise Amber</div><div class="vr">#D98512</div><div class="tok">--amber-500</div></div></div>
+        <div class="sw"><div class="chip" style="background:#C7402F"></div><div class="meta"><div class="nm">Danger Red</div><div class="vr">#C7402F</div><div class="tok">--danger</div></div></div>
+      </div>
+      <div class="sw-row">
+        <div class="sw"><div class="chip" style="background:#E8F4EC"></div><div class="meta"><div class="nm">Green soft</div><div class="vr">#E8F4EC</div><div class="tok">--green-50</div></div></div>
+        <div class="sw"><div class="chip" style="background:#FEF6E8"></div><div class="meta"><div class="nm">Amber soft</div><div class="vr">#FEF6E8</div><div class="tok">--amber-50</div></div></div>
+        <div class="sw"><div class="chip" style="background:#FBEAE7"></div><div class="meta"><div class="nm">Red soft</div><div class="vr">#FBEAE7</div><div class="tok">--danger-50</div></div></div>
+        <div class="sw"><div class="chip" style="background:#FBFAF6; border-bottom:1px solid #E4E3DF"></div><div class="meta"><div class="nm">Paper</div><div class="vr">#FBFAF6</div><div class="tok">--paper</div></div></div>
+      </div>
+      <table style="margin-top:14px">
+        <tr><th>Neutral</th><th>Hex</th><th>Token</th><th>Use</th></tr>
+        <tr><td>Ink 900</td><td class="mono">#1C1C1C</td><td class="mono">--ink-900</td><td>Headings</td></tr>
+        <tr><td>Ink 800</td><td class="mono">#2D2D2D</td><td class="mono">--ink-800</td><td>Body text</td></tr>
+        <tr><td>Ink 500</td><td class="mono">#787878</td><td class="mono">--ink-500</td><td>Muted / captions</td></tr>
+        <tr><td>Ink 200</td><td class="mono">#E4E3DF</td><td class="mono">--ink-200</td><td>Card borders</td></tr>
+        <tr><td>Ink 100</td><td class="mono">#F1F0EC</td><td class="mono">--ink-100</td><td>Track / fills</td></tr>
+        <tr><td>White</td><td class="mono">#FFFFFF</td><td class="mono">--white</td><td>Card surface</td></tr>
+      </table>
+    </section>
+
+    <!-- RAG -->
+    <section class="panel col-4">
+      <h2><span class="n">2</span> RAG semantics</h2>
+      <p style="font-size:12.5px; color:var(--ink-500); margin:0 0 10px">Always colour <b>plus</b> a text label — never colour alone. Thresholds on the 0–100 score:</p>
+      <div class="rag-line"><span class="dot" style="background:#006B38"></span><b style="font-family:var(--font-display)">Green</b> — healthy · score ≥ 75</div>
+      <div class="rag-line"><span class="dot" style="background:#D98512"></span><b style="font-family:var(--font-display)">Amber</b> — needs attention · 55–74</div>
+      <div class="rag-line"><span class="dot" style="background:#C7402F"></span><b style="font-family:var(--font-display)">Red</b> — at risk · &lt; 55</div>
+      <table style="margin-top:12px">
+        <tr><th>State</th><th>Fill</th><th>Text</th></tr>
+        <tr><td>Green</td><td class="mono">--green-50</td><td class="mono">--green-700</td></tr>
+        <tr><td>Amber</td><td class="mono">--amber-50</td><td class="mono">--amber-700*</td></tr>
+        <tr><td>Red</td><td class="mono">--danger-50</td><td class="mono">--danger</td></tr>
+      </table>
+      <p class="note">* <span class="derived" style="margin:0">Derived</span> <span class="mono">--amber-700 #8A5208</span> added for WCAG-AA text on the amber-50 fill (amber-500 fails AA as small text).</p>
+    </section>
+
+    <!-- TYPE -->
+    <section class="panel col-6">
+      <h2><span class="n">3</span> Typography</h2>
+      <table>
+        <tr><th>Role</th><th>Family</th><th>Size / Weight</th></tr>
+        <tr><td>Screen heading</td><td>Plus Jakarta Sans</td><td class="mono">24px / 800 · -.02em</td></tr>
+        <tr><td>Section title</td><td>Plus Jakarta Sans</td><td class="mono">15px / 800</td></tr>
+        <tr><td>Eyebrow / form label</td><td>Plus Jakarta Sans</td><td class="mono">11–13px / 700–800 · .1em ↑</td></tr>
+        <tr><td>Body</td><td>Mulish</td><td class="mono">13.5–14px / 400–600</td></tr>
+        <tr><td>Caption / meta</td><td>Mulish</td><td class="mono">11.5–12px / 400–500</td></tr>
+        <tr><td>Scores &amp; numerics</td><td>Space Mono</td><td class="mono">16–44px / 700</td></tr>
+      </table>
+      <p class="note">Display &amp; UI = Plus Jakarta Sans · long-form = Mulish · all numbers/data = Space Mono.</p>
+    </section>
+
+    <!-- SPACING / RADII / ELEV -->
+    <section class="panel col-6">
+      <h2><span class="n">4</span> Spacing · radii · elevation</h2>
+      <div class="spec">
+        <div class="row"><span class="k">Spacing</span><span class="v">4 · 8 · 12 · 16 · 24 · 32 · 48 (8px grid)</span></div>
+        <div class="row"><span class="k">Radii</span><span class="v">xs 6 · sm 10 · md 14 · lg 20 · xl 28 · pill 999</span></div>
+        <div class="row"><span class="k">Cards</span><span class="v">radius 20 (--r-lg) · 1px #E4E3DF · shadow-sm</span></div>
+        <div class="row"><span class="k">Buttons</span><span class="v">radius 999 (pill) · min-height 48</span></div>
+        <div class="row"><span class="k">Tap targets</span><span class="v">≥ 44px everywhere</span></div>
+        <div class="row"><span class="k">shadow-xs</span><span class="v">0 1px 2px rgba(28,28,28,.06)</span></div>
+        <div class="row"><span class="k">shadow-sm</span><span class="v">0 2px 6px rgba(28,28,28,.07)</span></div>
+        <div class="row"><span class="k">shadow-md</span><span class="v">0 8px 20px rgba(28,28,28,.09)</span></div>
+        <div class="row"><span class="k">focus ring</span><span class="v">0 0 0 3px rgba(43,168,219,.45)</span></div>
+      </div>
+    </section>
+
+    <!-- DERIVED COMPONENTS -->
+    <section class="panel col-4">
+      <h2><span class="n">5</span> RAG ring <span class="derived">Derived</span></h2>
+      <div class="spec">
+        <div class="row"><span class="k">Build</span><span class="v">2× SVG &lt;circle&gt; r=64, 150×150</span></div>
+        <div class="row"><span class="k">Track</span><span class="v">stroke --ink-100, width 13</span></div>
+        <div class="row"><span class="k">Arc</span><span class="v">stroke = RAG colour, width 13, round cap</span></div>
+        <div class="row"><span class="k">Arc len</span><span class="v">(score/100) × 2πr · dasharray</span></div>
+        <div class="row"><span class="k">Centre</span><span class="v">Space Mono 44/700 + "/ 100" 11px muted</span></div>
+      </div>
+    </section>
+
+    <section class="panel col-4">
+      <h2><span class="n">6</span> Stepper <span class="derived">Derived</span></h2>
+      <div class="spec">
+        <div class="row"><span class="k">Container</span><span class="v">bg --ink-50, 1px --ink-300, radius pill, pad 3</span></div>
+        <div class="row"><span class="k">+ / − btn</span><span class="v">38×38 circle, --white, shadow-xs, text --green-500</span></div>
+        <div class="row"><span class="k">Hover</span><span class="v">bg --green-50</span></div>
+        <div class="row"><span class="k">Disabled</span><span class="v">at min: text --ink-300, no shadow</span></div>
+        <div class="row"><span class="k">Value</span><span class="v">Space Mono 16/700, min-width 46, centred</span></div>
+      </div>
+    </section>
+
+    <section class="panel col-4">
+      <h2><span class="n">7</span> Toggle row <span class="derived">Derived</span></h2>
+      <div class="spec">
+        <div class="row"><span class="k">Track</span><span class="v">52×30, radius pill</span></div>
+        <div class="row"><span class="k">Off</span><span class="v">bg --ink-300</span></div>
+        <div class="row"><span class="k">On</span><span class="v">bg --green-500</span></div>
+        <div class="row"><span class="k">Knob</span><span class="v">24×24 white, shadow-sm, translateX 22</span></div>
+        <div class="row"><span class="k">A11y</span><span class="v">role=switch, aria-checked, label visible</span></div>
+      </div>
+    </section>
+
+    <!-- existing components -->
+    <section class="panel col-7">
+      <h2><span class="n">8</span> System components (re-used, not new)</h2>
+      <table>
+        <tr><th>Component</th><th>Default</th><th>Active / Hover</th><th>Disabled</th></tr>
+        <tr><td>Primary button</td><td class="mono">bg green-500, #fff</td><td class="mono">bg green-700 + shadow-brand · :active scale .98</td><td class="mono">opacity .45</td></tr>
+        <tr><td>Secondary button</td><td class="mono">2px green-500 border</td><td class="mono">bg green-50</td><td class="mono">opacity .45</td></tr>
+        <tr><td>Score chip</td><td class="mono">soft fill + dot + "92 · Green"</td><td class="mono">—</td><td class="mono">—</td></tr>
+        <tr><td>Stat card</td><td class="mono">white, radius 14, shadow-xs</td><td class="mono">—</td><td class="mono">—</td></tr>
+        <tr><td>Programme pill</td><td class="mono">ink-100 / ink-700</td><td class="mono">—</td><td class="mono">—</td></tr>
+        <tr><td>Induction tag</td><td class="mono">amber-50 / amber-700</td><td class="mono">—</td><td class="mono">—</td></tr>
+        <tr><td>Month selector</td><td class="mono">ink-100 pill group</td><td class="mono">active: white + green-500, shadow-xs</td><td class="mono">drives live figures §11</td></tr>
+        <tr><td>Numeric / text input</td><td class="mono">1.5px ink-300, radius 14</td><td class="mono">focus: blue-400 + ring</td><td class="mono">bg ink-50</td></tr>
+        <tr><td>Cluster list header</td><td class="mono">name 800 + "RC · name" muted</td><td class="mono">—</td><td class="mono">—</td></tr>
+      </table>
+    </section>
+
+    <!-- ROOT BLOCK -->
+    <section class="panel col-5">
+      <h2><span class="n">9</span> Copy-paste <span class="mono" style="text-transform:none; letter-spacing:0">:root</span></h2>
+<pre><span class="c">/* EduSpots tokens — Spot Pulse */</span>
+:root{
+  --green-700:#004C28;
+  --green-500:#006B38;  --green-50:#E8F4EC;
+  --blue-400:#2BA8DB;   --blue-50:#E8F6FC;
+  --amber-500:#D98512;  --amber-50:#FEF6E8;
+  --amber-700:#8A5208;  <span class="c">/* +derived AA */</span>
+  --danger:#C7402F;     --danger-50:#FBEAE7;
+  --ink-900:#1C1C1C; --ink-800:#2D2D2D;
+  --ink-500:#787878; --ink-200:#E4E3DF;
+  --ink-100:#F1F0EC; --ink-50:#F8F7F3;
+  --paper:#FBFAF6;   --white:#FFFFFF;
+  --r-md:14px; --r-lg:20px; --r-pill:999px;
+  --font-display:'Plus Jakarta Sans',sans-serif;
+  --font-body:'Mulish',sans-serif;
+  --font-mono:'Space Mono',monospace;
+}</pre>
+      <p class="note">Canvas: 380px mobile-first → centred 720px column ≥840px. Score = Access(25)+Engagement(20)+Support(25)+Governance(30).</p>
+    </section>
+
+    <!-- BOTTOM TAB BAR -->
+    <section class="panel col-7">
+      <h2><span class="n">10</span> Bottom tab bar + raised action <span class="derived">Nav · final</span></h2>
+      <p style="font-size:12.5px; color:var(--ink-500); margin:0 0 10px">The chosen navigation (Option A). Four fixed destinations — <b>Home · Spots · Check-in · About</b> — with the most frequent task raised as a center FAB.</p>
+      <div class="spec">
+        <div class="row"><span class="k">Bar</span><span class="v">bg --white, top 1px --ink-200, shadow 0 -2px 14px rgba(28,28,28,.05)</span></div>
+        <div class="row"><span class="k">Padding</span><span class="v">6px + env(safe-area-inset-bottom)</span></div>
+        <div class="row"><span class="k">Tab</span><span class="v">icon 24 + label Plus Jakarta 10.5/700; min-height 54</span></div>
+        <div class="row"><span class="k">Idle / active</span><span class="v">--ink-500 / --green-500 (aria-current)</span></div>
+        <div class="row"><span class="k">Center FAB</span><span class="v">52×52 circle --green-500, 4px --white ring, shadow-brand, margin-top -22</span></div>
+        <div class="row"><span class="k">FAB states</span><span class="v">hover --green-700 · :active scale .94</span></div>
+        <div class="row"><span class="k">Flow screens</span><span class="v">check-in &amp; success hide the bar; show ← Cancel bar + sticky Save bar</span></div>
+        <div class="row"><span class="k">Scroll pad</span><span class="v">view gets 104px bottom pad to clear the bar</span></div>
+        <div class="row"><span class="k">A11y</span><span class="v">role=tablist / tab · aria-current="true" on active</span></div>
+      </div>
+    </section>
+
+    <!-- PER-MONTH DATA MODEL -->
+    <section class="panel col-5">
+      <h2><span class="n">11</span> Live per-month figures <span class="derived">Data</span></h2>
+      <p style="font-size:12.5px; color:var(--ink-500); margin:0 0 10px">The dashboard is computed, not hard-coded. The month pills (Apr/May/Jun) select an index into each Spot's <span class="mono">trend[]</span> array; all dashboard figures recompute from that month.</p>
+      <div class="spec">
+        <div class="row"><span class="k">Source</span><span class="v">spot.trend[m] (null = not yet reporting)</span></div>
+        <div class="row"><span class="k">Spots tracked</span><span class="v">count of all Spots</span></div>
+        <div class="row"><span class="k">Avg health</span><span class="v">mean of reporting Spots' scores</span></div>
+        <div class="row"><span class="k">Check-ins logged</span><span class="v">reporting / total</span></div>
+        <div class="row"><span class="k">RAG donut</span><span class="v">Green/Amber/Red counts via §2 thresholds</span></div>
+        <div class="row"><span class="k">Cluster bars</span><span class="v">per-cluster mean for month m</span></div>
+        <div class="row"><span class="k">Check-in period</span><span class="v">always current open month (Jun 2026), separate from the view selector</span></div>
+      </div>
+    </section>
+
+  </div>
+
+  <p class="footer">Independent concept demo by Jeffrey Larbi-Akor — not an official EduSpots product. Metrics are illustrative.</p>
+</div>
+</body>
+</html>

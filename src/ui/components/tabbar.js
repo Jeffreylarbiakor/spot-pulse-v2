@@ -1,33 +1,35 @@
 import { navTo, openSub } from '../router.js';
+import { icon } from '../helpers.js';
 
 const TABS = [
-  { id: 'home',   label: 'Home',   icon: '⊞' },
-  { id: 'spots',  label: 'Spots',  icon: '📍' },
-  { id: 'checkin', label: '',      icon: '+', fab: true },
-  { id: 'about',  label: 'About',  icon: '○' },
+  { id: 'home',  label: 'Home',     iconName: 'home'  },
+  { id: 'spots', label: 'Spots',    iconName: 'spots' },
+  { id: 'fab',   label: 'Check-in', iconName: 'plus',  fab: true },
+  { id: 'about', label: 'About',    iconName: 'about' },
 ];
 
 export function renderTabBar(activeTab) {
-  const el = document.createElement('nav');
-  el.className = 'tab-bar';
-  el.setAttribute('aria-label', 'Main navigation');
+  const nav = document.createElement('nav');
+  nav.className = 'tabbar';
+  nav.setAttribute('role', 'tablist');
 
   TABS.forEach(t => {
     const btn = document.createElement('button');
+    btn.className = 'tab' + (t.fab ? ' center' : '');
+    btn.setAttribute('role', 'tab');
+
     if (t.fab) {
-      btn.className = 'tab-fab';
       btn.setAttribute('aria-label', 'New check-in');
-      btn.textContent = '+';
+      btn.innerHTML = `<span class="fab">${icon('plus', 'navicon')}</span><span class="lbl">${t.label}</span>`;
       btn.addEventListener('click', () => openSub('picker'));
     } else {
-      btn.className = 'tab-btn' + (activeTab === t.id ? ' active' : '');
-      btn.setAttribute('aria-label', t.label);
-      btn.setAttribute('aria-current', activeTab === t.id ? 'page' : 'false');
-      btn.innerHTML = `<span aria-hidden="true">${t.icon}</span><span>${t.label}</span>`;
+      btn.setAttribute('aria-current', activeTab === t.id ? 'true' : 'false');
+      btn.innerHTML = `${icon(t.iconName, 'navicon')}<span class="lbl">${t.label}</span>`;
       btn.addEventListener('click', () => navTo(t.id));
     }
-    el.appendChild(btn);
+
+    nav.appendChild(btn);
   });
 
-  return el;
+  return nav;
 }
