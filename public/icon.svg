@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Maskable safe zone: 512×512, content fits within 409×409 (80%) centred -->
+  <rect width="512" height="512" fill="#006B38"/>
+  <!-- "SP" monogram in white, centred -->
+  <text
+    x="256" y="310"
+    font-family="system-ui, -apple-system, sans-serif"
+    font-weight="800"
+    font-size="220"
+    text-anchor="middle"
+    fill="#FBFAF6"
+    letter-spacing="-8">SP</text>
+</svg>

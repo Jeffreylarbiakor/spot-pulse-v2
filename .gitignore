@@ -6,3 +6,5 @@ dist/
 .DS_Store
 coverage/
 .nyc_output/
+manifest.webmanifest
+dev-dist/

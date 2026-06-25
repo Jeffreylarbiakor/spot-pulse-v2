@@ -3,8 +3,9 @@
   "configurations": [
     {
       "name": "spot-pulse-dev",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
+      "runtimeExecutable": "/bin/sh",
+      "runtimeArgs": ["/Users/jeffrey/Documents/Projects/spot-pulse-v2/.claude/start-dev.sh"],
+      "cwd": "/Users/jeffrey/Documents/Projects/spot-pulse-v2",
       "port": 5173
     }
   ]

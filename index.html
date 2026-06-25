@@ -5,8 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Spot Pulse</title>
   <meta name="description" content="Spot health tracking for EduSpots Regional Coordinators. Concept demo by Jeffrey Larbi-Akor." />
-  <link rel="manifest" href="/manifest.webmanifest" />
+
+  <!-- PWA meta — manifest injected by vite-plugin-pwa -->
   <meta name="theme-color" content="#006B38" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="SpotPulse" />
+
+  <!-- Icons -->
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" href="/icon.svg" sizes="any" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -19,6 +29,6 @@
 <body>
   <div id="app"></div>
   <script type="module" src="/src/main.js"></script>
-  <script type="module" src="/src/pwa/register.js"></script>
+  <!-- SW registration handled by vite-plugin-pwa (registerType: autoUpdate) -->
 </body>
 </html>
