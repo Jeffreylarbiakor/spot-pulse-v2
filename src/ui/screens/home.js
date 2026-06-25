@@ -1,4 +1,4 @@
-import { getClusters, MONTHS } from '../../data/store.js';
+import { getClustersSync as getClusters, MONTHS } from '../../data/store.js';
 import { networkStats, clusterAvgs } from '../../../shared/core/selectors.js';
 import { esc, icon, donutSVG, disclaimerHTML } from '../helpers.js';
 import { openSub } from '../router.js';

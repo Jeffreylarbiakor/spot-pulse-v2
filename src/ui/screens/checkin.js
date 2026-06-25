@@ -1,4 +1,4 @@
-import { getClusters, REPORTING_MONTH } from '../../data/store.js';
+import { getClustersSync as getClusters, REPORTING_MONTH, saveSubmission } from '../../data/store.js';
 import { findSpot } from '../../../shared/core/selectors.js';
 import { esc } from '../helpers.js';
 
@@ -114,4 +114,40 @@ function wireForm(el) {
 
   const ta = el.querySelector('[data-text]');
   if (ta) ta.addEventListener('input', () => { formModel.achievement = ta.value; });
+}
+
+function reportingMonthKey(label) {
+  const [mon, year] = label.split(' ');
+  const map = { Jan:'01',Feb:'02',Mar:'03',Apr:'04',May:'05',Jun:'06',Jul:'07',Aug:'08',Sep:'09',Oct:'10',Nov:'11',Dec:'12' };
+  return `${year}-${map[mon]}`;
+}
+
+/** Persist the current formModel to IndexedDB as a pending submission. */
+export async function saveCheckin(spotId) {
+  const inputs = {
+    daysOpen:    formModel.daysOpen,
+    hoursPerDay: formModel.hoursPerDay,
+    sessions:    formModel.sessions,
+    attendance:  formModel.attendance,
+    sparks:      formModel.sparks,
+    rcCheckins:  formModel.rcCheckins,
+    trainings:   formModel.trainings,
+    committee:   formModel.committee,
+    dataOnTime:  formModel.dataOnTime,
+    challenge:   formModel.challenge,
+    books:       formModel.books,
+    achievement: formModel.achievement,
+  };
+  const submission = {
+    id: crypto.randomUUID(),
+    spotId,
+    month: reportingMonthKey(REPORTING_MONTH),
+    submittedBy: 'demo',
+    submittedAt: new Date().toISOString(),
+    source: 'app',
+    inputs,
+    syncState: 'pending',
+  };
+  await saveSubmission(submission);
+  return submission;
 }

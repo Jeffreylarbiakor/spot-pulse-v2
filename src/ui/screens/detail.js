@@ -1,4 +1,4 @@
-import { getClusters, MONTHS } from '../../data/store.js';
+import { getClustersSync as getClusters, MONTHS } from '../../data/store.js';
 import { findSpot } from '../../../shared/core/selectors.js';
 import { rag } from '../../../shared/core/rag.js';
 import { esc, icon, ringSVG, disclaimerHTML } from '../helpers.js';

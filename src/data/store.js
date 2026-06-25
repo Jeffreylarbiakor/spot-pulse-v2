@@ -1,12 +1,46 @@
+import { openDB } from 'idb';
 import SEED from '../../seed/clusters.json' assert { type: 'json' };
+import { mergeSubmissions } from './merge.js';
 
-// In M1: in-memory store from seed data.
-// M3 replaces this with IndexedDB-backed state.
-let _clusters = SEED.clusters;
+const DB_NAME = 'spot-pulse';
+const DB_VERSION = 1;
+
+let _db;
+async function getDB() {
+  if (!_db) _db = await openDB(DB_NAME, DB_VERSION, {
+    upgrade(db) {
+      db.createObjectStore('submissions', { keyPath: 'id' });
+      db.createObjectStore('network', { keyPath: 'id' });
+    },
+  });
+  return _db;
+}
 
 export const MONTHS = SEED.months;
 export const REPORTING_MONTH = SEED.reportingMonth;
 
-export function getClusters() { return _clusters; }
+// In-memory cache — screens read this synchronously via getClustersSync()
+let _cache = SEED.clusters;
 
-export function setClusters(clusters) { _clusters = clusters; }
+/** Refresh cache from IndexedDB and return merged clusters. */
+export async function getClusters() {
+  const db = await getDB();
+  const submissions = await db.getAll('submissions');
+  _cache = mergeSubmissions(SEED.clusters, submissions, MONTHS);
+  return _cache;
+}
+
+/** Synchronous read of the last-known cache (seed until first getClusters() call). */
+export function getClustersSync() {
+  return _cache;
+}
+
+export async function saveSubmission(submission) {
+  const db = await getDB();
+  await db.put('submissions', submission);
+}
+
+export async function getSubmissions() {
+  const db = await getDB();
+  return db.getAll('submissions');
+}

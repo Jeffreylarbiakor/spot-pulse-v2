@@ -1,4 +1,4 @@
-import { getClusters, REPORTING_MONTH } from '../../data/store.js';
+import { getClustersSync as getClusters, REPORTING_MONTH } from '../../data/store.js';
 import { rag } from '../../../shared/core/rag.js';
 import { esc, icon, disclaimerHTML } from '../helpers.js';
 import { openSub } from '../router.js';

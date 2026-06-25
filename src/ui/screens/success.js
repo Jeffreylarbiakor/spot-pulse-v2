@@ -1,4 +1,4 @@
-import { getClusters, MONTHS, REPORTING_MONTH } from '../../data/store.js';
+import { getClustersSync as getClusters, MONTHS, REPORTING_MONTH } from '../../data/store.js';
 import { findSpot, allSpots } from '../../../shared/core/selectors.js';
 import { computePillars, scoreOf } from '../../../shared/core/scoring.js';
 import { rag } from '../../../shared/core/rag.js';

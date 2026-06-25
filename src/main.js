@@ -1,4 +1,4 @@
-import { MONTHS } from './data/store.js';
+import { MONTHS, getClusters } from './data/store.js';
 import { getState, onRoute, isFlow, navTo, closeSub, openSub } from './ui/router.js';
 import { renderTopbar, renderSubbar } from './ui/components/topbar.js';
 import { renderTabBar }  from './ui/components/tabbar.js';
@@ -7,7 +7,7 @@ import { renderSpots }   from './ui/screens/spots.js';
 import { renderAbout }   from './ui/screens/about.js';
 import { renderDetail }  from './ui/screens/detail.js';
 import { renderPicker }  from './ui/screens/picker.js';
-import { renderCheckin } from './ui/screens/checkin.js';
+import { renderCheckin, saveCheckin } from './ui/screens/checkin.js';
 import { renderSuccess } from './ui/screens/success.js';
 
 const appEl = document.getElementById('app');
@@ -59,7 +59,12 @@ function render(state) {
     savebar.className = 'savebar';
     savebar.innerHTML = `<button class="btn btn-primary btn-block" id="saveBtn">Save check-in</button>`;
     const spotId = state.sub.id;
-    savebar.querySelector('#saveBtn').addEventListener('click', () => openSub('success', spotId));
+    savebar.querySelector('#saveBtn').addEventListener('click', async () => {
+      await saveCheckin(spotId);
+      // Refresh the in-memory cache so success screen and dashboard reflect the new score
+      await getClusters();
+      openSub('success', spotId);
+    });
     appEl.appendChild(savebar);
   }
 
@@ -73,5 +78,8 @@ function render(state) {
   if (view) view.scrollTop = 0;
 }
 
-render(getState());
-onRoute(render);
+// Initialise: load from IndexedDB into cache, then render
+getClusters().then(() => {
+  render(getState());
+  onRoute(render);
+});
