@@ -4,6 +4,8 @@ import { esc } from '../helpers.js';
 
 // Shared mutable form state — cleared on each new check-in
 export let formModel = {};
+// Id of the most recently saved submission — read by success screen
+export let lastSubmissionId = null;
 
 function defaultModel(spotId) {
   return {
@@ -149,5 +151,6 @@ export async function saveCheckin(spotId) {
     syncState: 'pending',
   };
   await saveSubmission(submission);
+  lastSubmissionId = submission.id;
   return submission;
 }

@@ -44,3 +44,9 @@ export async function getSubmissions() {
   const db = await getDB();
   return db.getAll('submissions');
 }
+
+export async function updateSubmissionSyncState(id, syncState) {
+  const db = await getDB();
+  const sub = await db.get('submissions', id);
+  if (sub) await db.put('submissions', { ...sub, syncState });
+}

@@ -1,4 +1,5 @@
 import { MONTHS, getClusters } from './data/store.js';
+import { syncPending, registerSyncTriggers } from './data/sync.js';
 import { getState, onRoute, isFlow, navTo, closeSub, openSub } from './ui/router.js';
 import { renderTopbar, renderSubbar } from './ui/components/topbar.js';
 import { renderTabBar }  from './ui/components/tabbar.js';
@@ -61,9 +62,10 @@ function render(state) {
     const spotId = state.sub.id;
     savebar.querySelector('#saveBtn').addEventListener('click', async () => {
       await saveCheckin(spotId);
-      // Refresh the in-memory cache so success screen and dashboard reflect the new score
       await getClusters();
       openSub('success', spotId);
+      // Fire-and-forget: attempt sync after navigating to success screen
+      syncPending();
     });
     appEl.appendChild(savebar);
   }
@@ -82,4 +84,6 @@ function render(state) {
 getClusters().then(() => {
   render(getState());
   onRoute(render);
+  registerSyncTriggers();
+  syncPending(); // flush any pending submissions from a previous session
 });

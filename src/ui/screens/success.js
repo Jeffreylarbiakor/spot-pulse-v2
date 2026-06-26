@@ -2,9 +2,26 @@ import { getClustersSync as getClusters, MONTHS, REPORTING_MONTH } from '../../d
 import { findSpot, allSpots } from '../../../shared/core/selectors.js';
 import { computePillars, scoreOf } from '../../../shared/core/scoring.js';
 import { rag } from '../../../shared/core/rag.js';
-import { formModel } from './checkin.js';
+import { formModel, lastSubmissionId } from './checkin.js';
 import { esc, ringSVG, disclaimerHTML } from '../helpers.js';
 import { openSub, navTo } from '../router.js';
+import { syncPending } from '../../data/sync.js';
+
+const BADGE_CONFIG = {
+  pending:          { cls: 'pending', label: 'Pending sync',    showRetry: false },
+  syncing:          { cls: 'syncing', label: 'Syncing…',   showRetry: false },
+  synced:           { cls: 'synced',  label: 'Synced',          showRetry: false },
+  'synced-updated': { cls: 'synced',  label: 'Synced (updated)', showRetry: false },
+  failed:           { cls: 'failed',  label: 'Sync failed',     showRetry: true  },
+};
+
+function badgeHTML(state) {
+  const cfg = BADGE_CONFIG[state] ?? BADGE_CONFIG.pending;
+  const retry = cfg.showRetry
+    ? `<button class="btn" id="retryBtn" style="padding:4px 12px;font-size:12px;min-height:32px">Retry</button>`
+    : '';
+  return `<span class="sync-badge ${cfg.cls}" id="syncBadge">${cfg.label}</span>${retry}`;
+}
 
 export function renderSuccess(spotId) {
   const clusters = getClusters();
@@ -26,7 +43,7 @@ export function renderSuccess(spotId) {
   const sc = scoreOf(pillars);
   const r = rag(sc);
 
-  // Delta vs the previous reporting month (index -2)
+  // Delta vs the previous reporting month
   const prevScore = s.trend[MONTHS.length - 2];
   const delta = prevScore != null ? sc - prevScore : 0;
   const prevMonthLabel = MONTHS[MONTHS.length - 2].split(' ')[0];
@@ -58,17 +75,43 @@ export function renderSuccess(spotId) {
         <button class="btn btn-secondary btn-block" id="nextBtn">Next Spot</button>
       </div>
     </div>
-    <div style="margin-top:12px">
-      <span class="sync-badge pending">Pending sync</span>
+    <div style="margin-top:12px;display:flex;align-items:center;justify-content:center;gap:8px" id="syncRow">
+      ${badgeHTML('pending')}
     </div>
     ${disclaimerHTML()}`;
 
   el.querySelector('#dashBtn').addEventListener('click', () => navTo('home'));
   el.querySelector('#nextBtn').addEventListener('click', () => {
     const spots = allSpots(clusters);
-    const i = spots.findIndex(s => s.id === spotId);
+    const i = spots.findIndex(sp => sp.id === spotId);
     openSub('checkin', spots[(i + 1) % spots.length].id);
   });
+
+  // Live sync badge — updates in-place via the spot-pulse:sync-changed event
+  const submissionId = lastSubmissionId;
+
+  function updateBadge(state) {
+    const row = el.querySelector('#syncRow');
+    if (!row) return;
+    row.innerHTML = badgeHTML(state);
+    const retryBtn = row.querySelector('#retryBtn');
+    if (retryBtn) retryBtn.addEventListener('click', syncPending);
+  }
+
+  function onSyncChanged(e) {
+    if (e.detail.id === submissionId) updateBadge(e.detail.syncState);
+  }
+
+  window.addEventListener('spot-pulse:sync-changed', onSyncChanged);
+
+  // Remove listener when this screen leaves the DOM
+  const observer = new MutationObserver(() => {
+    if (!document.contains(el)) {
+      window.removeEventListener('spot-pulse:sync-changed', onSyncChanged);
+      observer.disconnect();
+    }
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
 
   return el;
 }
