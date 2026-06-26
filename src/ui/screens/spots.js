@@ -1,4 +1,5 @@
 import { getClustersSync as getClusters } from '../../data/store.js';
+import { getSession } from '../../auth/session.js';
 import { allSpots } from '../../../shared/core/selectors.js';
 import { rag } from '../../../shared/core/rag.js';
 import { esc, icon, disclaimerHTML } from '../helpers.js';
@@ -22,7 +23,11 @@ function spotRowHTML(s) {
 }
 
 export function renderSpots() {
-  const clusters = getClusters();
+  const session = getSession();
+  const allClusters = getClusters();
+  const clusters = session.mode === 'rc'
+    ? allClusters.filter(c => c.rcId === session.rc.clusterId)
+    : allClusters;
   const spots = allSpots(clusters);
 
   const el = document.createElement('div');
@@ -36,8 +41,8 @@ export function renderSpots() {
   ).join('');
 
   el.innerHTML = `
-    <h1 class="h-screen" style="margin:2px 4px 4px">All Spots</h1>
-    <p style="margin:0 4px 10px;color:var(--text-muted);font-size:13px">${spots.length} Spots across ${clusters.length} clusters · tap for detail</p>
+    <h1 class="h-screen" style="margin:2px 4px 4px">${session.mode === 'rc' ? 'My Spots' : 'All Spots'}</h1>
+    <p style="margin:0 4px 10px;color:var(--text-muted);font-size:13px">${spots.length} Spots${session.mode === 'rc' ? '' : ` across ${clusters.length} clusters`} · tap for detail</p>
     ${list}
     ${disclaimerHTML()}`;
 

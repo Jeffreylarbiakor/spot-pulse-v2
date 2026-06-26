@@ -1,4 +1,5 @@
 import { getClustersSync as getClusters, REPORTING_MONTH } from '../../data/store.js';
+import { getSession } from '../../auth/session.js';
 import { rag } from '../../../shared/core/rag.js';
 import { esc, icon, disclaimerHTML } from '../helpers.js';
 import { openSub } from '../router.js';
@@ -21,7 +22,11 @@ function checkinRowHTML(s) {
 }
 
 export function renderPicker() {
-  const clusters = getClusters();
+  const session = getSession();
+  const allClusters = getClusters();
+  const clusters = session.mode === 'rc'
+    ? allClusters.filter(c => c.rcId === session.rc.clusterId)
+    : allClusters;
   const el = document.createElement('div');
   el.className = 'view';
   el.id = 'view';

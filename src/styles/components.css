@@ -643,3 +643,93 @@ body {
     transition: none !important;
   }
 }
+
+/* ── Session strip (demo / RC mode indicator) ── */
+.session-strip {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 16px;
+  font-size: 12px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  gap: 8px;
+}
+.session-strip.demo {
+  background: var(--amber-50);
+  border-bottom: 1px solid var(--amber-100);
+  color: var(--amber-700);
+}
+.session-strip.rc {
+  background: var(--green-50);
+  border-bottom: 1px solid var(--green-100);
+  color: var(--green-700);
+}
+.session-strip button {
+  font-size: 11px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: var(--r-pill);
+  border: 1.5px solid currentColor;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  min-height: 28px;
+  white-space: nowrap;
+}
+
+/* ── Sign-in overlay ── */
+.signin-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 200;
+  padding: 0 0 env(safe-area-inset-bottom, 0);
+}
+.signin-card {
+  background: var(--paper);
+  border-radius: var(--r-lg) var(--r-lg) 0 0;
+  padding: 24px 20px 32px;
+  width: 100%;
+  max-width: 480px;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.signin-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: var(--ink-100);
+  color: var(--text-body);
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.signin-list { display: flex; flex-direction: column; gap: 8px; }
+.signin-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-radius: var(--r-md);
+  border: 1px solid var(--ink-200);
+  background: var(--white);
+  text-align: left;
+  cursor: pointer;
+  min-height: 60px;
+  transition: background .15s;
+}
+.signin-row:hover, .signin-row:focus-visible { background: var(--green-50); border-color: var(--green-200); }
+.signin-row:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }

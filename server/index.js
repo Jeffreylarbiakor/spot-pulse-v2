@@ -13,6 +13,14 @@ const SEED = require('../seed/clusters.json');
 const PORT = process.env.PORT || 3001;
 const HOST = '0.0.0.0';
 
+// Build spotId → rcId lookup for scope enforcement
+const SPOT_TO_RC = {};
+for (const cluster of SEED.clusters) {
+  for (const spot of cluster.spots) {
+    SPOT_TO_RC[spot.id] = cluster.rcId;
+  }
+}
+
 const app = Fastify({ logger: false });
 
 // --- CORS (dev: allow Vite origin) ---
@@ -36,6 +44,14 @@ app.post('/api/checkins', async (req, reply) => {
 
   if (!sub?.id || !sub?.spotId || !sub?.month || !sub?.inputs) {
     return reply.code(400).send({ error: 'Missing required fields: id, spotId, month, inputs' });
+  }
+
+  // Scope enforcement: if submittedBy is set, it must own this spot
+  if (sub.submittedBy) {
+    const owningRc = SPOT_TO_RC[sub.spotId];
+    if (owningRc && owningRc !== sub.submittedBy) {
+      return reply.code(403).send({ error: 'Spot not in your cluster' });
+    }
   }
 
   // Idempotency: same id already stored — return the existing record

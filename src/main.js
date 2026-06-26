@@ -1,6 +1,8 @@
 import { MONTHS, getClusters } from './data/store.js';
 import { syncPending, registerSyncTriggers } from './data/sync.js';
-import { getState, onRoute, isFlow, navTo, closeSub, openSub } from './ui/router.js';
+import { getSession, signOut } from './auth/session.js';
+import { showSignInOverlay } from './ui/screens/signin.js';
+import { getState, onRoute, navTo, closeSub, openSub } from './ui/router.js';
 import { renderTopbar, renderSubbar } from './ui/components/topbar.js';
 import { renderTabBar }  from './ui/components/tabbar.js';
 import { renderHome }    from './ui/screens/home.js';
@@ -14,44 +16,63 @@ import { renderSuccess } from './ui/screens/success.js';
 const appEl = document.getElementById('app');
 appEl.className = 'app';
 
-let currentMonth = MONTHS.length - 1;  // default to latest month (Jun)
+let currentMonth = MONTHS.length - 1;
+
+function renderSessionStrip(session) {
+  const el = document.createElement('div');
+  if (session.mode === 'rc') {
+    const firstName = session.rc.name.split(' ')[0];
+    const clusterShort = session.rc.clusterName.split(' ')[0];
+    el.className = 'session-strip rc';
+    el.innerHTML = `
+      <span>RC: ${firstName} · ${clusterShort}</span>
+      <button id="signOutBtn" aria-label="Sign out">Sign out</button>`;
+    el.querySelector('#signOutBtn').addEventListener('click', signOut);
+  } else {
+    el.className = 'session-strip demo';
+    el.innerHTML = `
+      <span>Demo mode · Illustrative data only</span>
+      <button id="signInBtn" aria-label="Sign in as Regional Coordinator">Sign in as RC →</button>`;
+    el.querySelector('#signInBtn').addEventListener('click', showSignInOverlay);
+  }
+  return el;
+}
 
 function render(state) {
+  const session = getSession();
   appEl.innerHTML = '';
-  const flow = isFlow();
 
   if (state.sub) {
-    // Flow screen: sub-bar only
     const isCheckin = state.sub.type === 'checkin' || state.sub.type === 'picker';
     const label = isCheckin ? '← Cancel' : '← Back';
     const onBack = () => {
       if (state.sub.type === 'checkin' || state.sub.type === 'picker') {
-        closeSub();
-        navTo('home');
+        closeSub(); navTo('home');
       } else {
         closeSub();
       }
     };
     appEl.appendChild(renderSubbar(label, onBack));
   } else {
-    // Tab root: full topbar with optional month pills
     appEl.appendChild(renderTopbar(state.tab, currentMonth, (i) => {
       currentMonth = i;
       render(getState());
     }));
+    // Session strip only on tab roots (not flow screens)
+    appEl.appendChild(renderSessionStrip(session));
   }
 
   // Screen content
   if (state.sub) {
     const { type, id } = state.sub;
-    if (type === 'detail')  appEl.appendChild(renderDetail(id));
+    if (type === 'detail')   appEl.appendChild(renderDetail(id));
     else if (type === 'picker')  appEl.appendChild(renderPicker());
     else if (type === 'checkin') appEl.appendChild(renderCheckin(id));
     else if (type === 'success') appEl.appendChild(renderSuccess(id));
   } else {
-    if (state.tab === 'home')   appEl.appendChild(renderHome(currentMonth));
-    else if (state.tab === 'spots') appEl.appendChild(renderSpots());
-    else if (state.tab === 'about') appEl.appendChild(renderAbout());
+    if (state.tab === 'home')        appEl.appendChild(renderHome(currentMonth));
+    else if (state.tab === 'spots')  appEl.appendChild(renderSpots());
+    else if (state.tab === 'about')  appEl.appendChild(renderAbout());
   }
 
   // Save bar (check-in only)
@@ -64,26 +85,23 @@ function render(state) {
       await saveCheckin(spotId);
       await getClusters();
       openSub('success', spotId);
-      // Fire-and-forget: attempt sync after navigating to success screen
       syncPending();
     });
     appEl.appendChild(savebar);
   }
 
-  // Tab bar (hidden in all sub-screens)
-  if (!state.sub) {
-    appEl.appendChild(renderTabBar(state.tab));
-  }
+  if (!state.sub) appEl.appendChild(renderTabBar(state.tab));
 
-  // Scroll to top on each render
   const view = document.getElementById('view');
   if (view) view.scrollTop = 0;
 }
 
-// Initialise: load from IndexedDB into cache, then render
+// Re-render when session changes (sign-in / sign-out)
+window.addEventListener('spot-pulse:session-changed', () => render(getState()));
+
 getClusters().then(() => {
   render(getState());
   onRoute(render);
   registerSyncTriggers();
-  syncPending(); // flush any pending submissions from a previous session
+  syncPending();
 });

@@ -1,4 +1,5 @@
 import { getClustersSync as getClusters, REPORTING_MONTH, saveSubmission } from '../../data/store.js';
+import { getSession } from '../../auth/session.js';
 import { findSpot } from '../../../shared/core/selectors.js';
 import { esc } from '../helpers.js';
 
@@ -144,7 +145,7 @@ export async function saveCheckin(spotId) {
     id: crypto.randomUUID(),
     spotId,
     month: reportingMonthKey(REPORTING_MONTH),
-    submittedBy: 'demo',
+    submittedBy: getSession().rc?.rcId ?? null,
     submittedAt: new Date().toISOString(),
     source: 'app',
     inputs,
