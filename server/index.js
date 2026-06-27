@@ -1,5 +1,6 @@
 import Fastify from 'fastify';
 import { createRequire } from 'node:module';
+import { registerSmsRoute } from './routes/sms.js';
 
 // ---------------------------------------------------------------------------
 // Adapter selection
@@ -76,6 +77,11 @@ app.get('/api/me', async (req, reply) => {
   const info = await adapter.getMe(rcId);
   return reply.send(info);
 });
+
+// ---------------------------------------------------------------------------
+// POST /api/sms  — SMS / WhatsApp webhook
+// ---------------------------------------------------------------------------
+registerSmsRoute(app, adapter, SPOT_TO_RC);
 
 // ---------------------------------------------------------------------------
 app.listen({ port: Number(PORT), host: HOST }, (err) => {
