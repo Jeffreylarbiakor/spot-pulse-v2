@@ -58,14 +58,14 @@ export function renderDetail(spotId) {
     </div>
     <div class="card" style="margin-top:14px;text-align:center">
       <div class="ring-wrap">
-        <div class="ring">${ringSVG(sc, r)}<div class="ctr"><span class="num">${sc}</span><span class="of">/ 100</span></div></div>
+        <div class="ring">${ringSVG(sc, r, `${esc(s.name)}: score ${sc} out of 100, ${r.label}`)}<div class="ctr"><span class="num">${sc}</span><span class="of">/ 100</span></div></div>
         <span class="chip ${r.cls}" style="font-size:14px"><span class="dot"></span>${r.label}</span>
       </div>
     </div>
     <div class="card" style="margin-top:14px"><div class="section-title" style="margin-bottom:14px">Pillar breakdown</div>${pillars}</div>
     <div class="card" style="margin-top:14px">
       <div class="section-title" style="margin-bottom:14px">3-month trend</div>
-      <div class="trend">${trendHTML}<span class="arrow ${delta >= 0 ? 'up' : 'down'}" style="margin-left:6px">${delta >= 0 ? '▲' : '▼'} ${delta >= 0 ? '+' : ''}${delta}</span></div>
+      <div class="trend">${trendHTML}<span class="arrow ${delta >= 0 ? 'up' : 'down'}" style="margin-left:6px" aria-label="${delta >= 0 ? 'Up' : 'Down'} ${Math.abs(delta)} points vs prior month">${delta >= 0 ? '▲' : '▼'} ${delta >= 0 ? '+' : ''}${delta}</span></div>
     </div>
     <div class="card" style="margin-top:14px"><div class="section-title" style="margin-bottom:14px">Identity</div><div class="idgrid">${idRows}</div></div>
     <button class="btn btn-primary btn-block" id="checkinBtn" style="margin-top:16px">${icon('plus', 'navicon')} Check-in for ${reportingMonthShort}</button>

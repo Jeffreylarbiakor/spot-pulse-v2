@@ -34,7 +34,7 @@ export function renderHome(monthIndex) {
       <div class="section-title" style="margin-bottom:14px">RAG distribution · ${mlabel}</div>
       <div style="display:flex;align-items:center;gap:18px">
         <div style="position:relative;flex:none;width:140px;height:140px">
-          ${donutSVG(ns.g, ns.a, ns.r)}
+          ${donutSVG(ns.g, ns.a, ns.r, `RAG distribution for ${mlabel}: ${ns.g} Green, ${ns.a} Amber, ${ns.r} Red`)}
           <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
             <span style="font-family:var(--font-mono);font-weight:700;font-size:26px;color:var(--text-strong)">${ns.reporting}</span>
             <span style="font-size:10px;color:var(--text-muted)">reporting</span>

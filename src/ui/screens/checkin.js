@@ -19,11 +19,11 @@ function defaultModel(spotId) {
   };
 }
 
-function stepperHTML(key, min, step, value) {
+function stepperHTML(key, min, step, value, label) {
   return `<div class="stepper" data-key="${key}" data-min="${min}" data-step="${step}">
-    <button class="dec" aria-label="decrease">−</button>
-    <span class="val" id="v_${key}">${value}</span>
-    <button class="inc" aria-label="increase">+</button>
+    <button class="dec" aria-label="Decrease ${label}">−</button>
+    <span class="val" id="v_${key}" aria-live="polite" aria-atomic="true">${value}</span>
+    <button class="inc" aria-label="Increase ${label}">+</button>
   </div>`;
 }
 
@@ -50,21 +50,21 @@ export function renderCheckin(spotId) {
 
     <div class="card" style="margin-top:16px"><div class="fsection">
       <div class="lbl">Opening</div>
-      <div class="field"><span class="fl">Days open<small>This month</small></span>${stepperHTML('daysOpen', 0, 1, m.daysOpen)}</div>
-      <div class="field"><span class="fl">Avg hours per day<small>0.5-hour steps</small></span>${stepperHTML('hoursPerDay', 0, 0.5, m.hoursPerDay)}</div>
+      <div class="field"><span class="fl">Days open<small>This month</small></span>${stepperHTML('daysOpen', 0, 1, m.daysOpen, 'days open')}</div>
+      <div class="field"><span class="fl">Avg hours per day<small>0.5-hour steps</small></span>${stepperHTML('hoursPerDay', 0, 0.5, m.hoursPerDay, 'hours per day')}</div>
     </div></div>
 
     <div class="card" style="margin-top:14px"><div class="fsection">
       <div class="lbl">Engagement</div>
-      <div class="field"><span class="fl">Club sessions held</span>${stepperHTML('sessions', 0, 1, m.sessions)}</div>
+      <div class="field"><span class="fl">Club sessions held</span>${stepperHTML('sessions', 0, 1, m.sessions, 'club sessions')}</div>
       <div class="field col"><label class="fl" for="f_att">Total attendance</label><input class="ninput" id="f_att" type="number" inputmode="numeric" value="${m.attendance}" data-num="attendance"></div>
       <div class="field col"><label class="fl" for="f_spk">New Spark registrations</label><input class="ninput" id="f_spk" type="number" inputmode="numeric" value="${m.sparks}" data-num="sparks"></div>
     </div></div>
 
     <div class="card" style="margin-top:14px"><div class="fsection">
       <div class="lbl">Support</div>
-      <div class="field"><span class="fl">Check-ins with your RC</span>${stepperHTML('rcCheckins', 0, 1, m.rcCheckins)}</div>
-      <div class="field"><span class="fl">Trainings attended</span>${stepperHTML('trainings', 0, 1, m.trainings)}</div>
+      <div class="field"><span class="fl">Check-ins with your RC</span>${stepperHTML('rcCheckins', 0, 1, m.rcCheckins, 'RC check-ins')}</div>
+      <div class="field"><span class="fl">Trainings attended</span>${stepperHTML('trainings', 0, 1, m.trainings, 'trainings attended')}</div>
     </div></div>
 
     <div class="card" style="margin-top:14px"><div class="fsection">

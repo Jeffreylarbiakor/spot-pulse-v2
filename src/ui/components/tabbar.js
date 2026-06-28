@@ -11,19 +11,18 @@ const TABS = [
 export function renderTabBar(activeTab) {
   const nav = document.createElement('nav');
   nav.className = 'tabbar';
-  nav.setAttribute('role', 'tablist');
+  nav.setAttribute('aria-label', 'Main navigation');
 
   TABS.forEach(t => {
     const btn = document.createElement('button');
     btn.className = 'tab' + (t.fab ? ' center' : '');
-    btn.setAttribute('role', 'tab');
 
     if (t.fab) {
       btn.setAttribute('aria-label', 'New check-in');
       btn.innerHTML = `<span class="fab">${icon('plus', 'navicon')}</span><span class="lbl">${t.label}</span>`;
       btn.addEventListener('click', () => openSub('picker'));
     } else {
-      btn.setAttribute('aria-current', activeTab === t.id ? 'true' : 'false');
+      btn.setAttribute('aria-current', activeTab === t.id ? 'page' : 'false');
       btn.innerHTML = `${icon(t.iconName, 'navicon')}<span class="lbl">${t.label}</span>`;
       btn.addEventListener('click', () => navTo(t.id));
     }

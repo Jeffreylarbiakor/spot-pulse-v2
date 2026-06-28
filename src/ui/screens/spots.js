@@ -36,7 +36,7 @@ export function renderSpots() {
   el.tabIndex = -1;
 
   const list = clusters.map(c =>
-    `<div class="cluster-h"><span class="name">${esc(c.name)}</span><span class="rc">RC · ${esc(c.rc)}</span></div>
+    `<h2 class="cluster-h"><span class="name">${esc(c.name)}</span><span class="rc">RC · ${esc(c.rc)}</span></h2>
      ${c.spots.map(spotRowHTML).join('')}`
   ).join('');
 

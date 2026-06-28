@@ -40,6 +40,7 @@ export function showSignInOverlay() {
 
   overlay.querySelector('#signinClose').addEventListener('click', remove);
   overlay.addEventListener('click', e => { if (e.target === overlay) remove(); });
+  overlay.addEventListener('keydown', e => { if (e.key === 'Escape') remove(); });
 
   overlay.querySelector('#signinList').addEventListener('click', e => {
     const row = e.target.closest('[data-rcid]');
