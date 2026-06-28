@@ -6,18 +6,14 @@ A mobile-first PWA for Regional Coordinators to track the health of community le
 
 ## What works today
 
-- **Full 7-screen UI** — Home dashboard, Spots directory, Spot detail, Check-in picker, 60-second check-in form, Success screen, About.
+- **Full 7-screen UI** — Home dashboard, Spots directory, Spot detail, Check-in picker, 60-second check-in form, Success screen, About. Accessible: contextual aria-labels, `role="img"` on charts, `aria-current="page"` on navigation, WCAG AA contrast throughout.
 - **Real score computation** — `computePillars(inputs)` runs on save. The success screen shows the real score and delta vs the prior month.
-- **IndexedDB persistence** — check-ins survive page reload. The dashboard recomputes from stored submissions.
-- **PWA / offline-first** — installable on iOS and Android via the browser menu. Opens fully offline after first visit; Workbox pre-caches all assets.
-- **Sync engine** — check-ins save locally as `pending`, then flush to the backend when online. The success screen shows a live Pending → Syncing → Synced / Failed badge. Failed submissions surface a Retry button.
-- **Backend API** — Fastify + SQLite append-only store. `POST /api/checkins` is idempotent on submission UUID. Server recomputes pillars/score from raw inputs and never trusts client-sent values.
-- **RC accounts + cluster scoping** — sign in as any of the 5 seed RCs. The Spots directory and Check-in picker filter to that RC's cluster. `submittedBy` is recorded against each submission; the server rejects cross-cluster writes with 403.
-- **Demo mode** — full network visible without sign-in; all illustrative data.
-- **SMS/WhatsApp parser** — RCs can submit check-ins by text message. `POST /api/sms` accepts Africa's Talking and Twilio webhook shapes, parses the two-line SP format, and persists via the active adapter.
-- **Write-through adapter** — storage is abstracted behind a three-function interface (`saveCheckin`, `getNetwork`, `getMe`). Swap `ADAPTER=mock` for in-memory testing or `ADAPTER=eduspots` when a real backend is wired. See [`docs/integration-contract.md`](docs/integration-contract.md) for the full EduSpots integration contract.
-- **Accessibility** — all decorative SVGs carry `aria-hidden`, charts have `role="img"` with descriptive labels, stepper buttons have contextual aria-labels, modal has ESC handler, navigation uses `aria-current="page"`, identity grid labels pass WCAG AA contrast.
-- **Shared pure core** — `shared/core/scoring.js`, `rag.js`, `selectors.js`, `merge.js`, and `sms-parser.js` are imported by both the client and server — one implementation, no duplication.
+- **PWA / offline-first** — installable on iOS and Android via the browser menu. Opens fully offline after first visit; Workbox pre-caches all assets. IndexedDB keeps check-ins across reloads.
+- **Sync engine** — check-ins save locally as `pending`, then flush to the backend when online. The success screen shows a live Pending → Syncing → Synced / Failed badge with a Retry button on failure.
+- **RC accounts + cluster scoping** — sign in as any of the 5 seed RCs. The Spots directory and Check-in picker filter to that RC's cluster. `submittedBy` is recorded on every submission; the server rejects cross-cluster writes with 403. Full network remains visible in demo mode without sign-in.
+- **Backend API** — Fastify + SQLite append-only store. `POST /api/checkins` is idempotent on submission UUID. Server recomputes pillars/score from raw inputs and never trusts client-sent values. Storage is abstracted behind a three-function adapter interface — swap `ADAPTER=mock` for in-memory testing or `ADAPTER=eduspots` when the real backend is wired. See [`docs/integration-contract.md`](docs/integration-contract.md).
+- **SMS/WhatsApp check-ins** — `POST /api/sms` accepts Africa's Talking and Twilio webhook shapes, parses the two-line SP format, and persists via the active adapter. Same scope enforcement and idempotency guarantees as the app flow.
+- **Shared pure core** — `shared/core/` (`scoring.js`, `rag.js`, `selectors.js`, `merge.js`, `sms-parser.js`) is imported by both client and server — one implementation, no duplication.
 
 ## Build milestones
 
@@ -39,21 +35,31 @@ A mobile-first PWA for Regional Coordinators to track the health of community le
 
 ```
 spot-pulse-v2/
-├── shared/core/          # Pure JS — imported by both client and server
-│   ├── scoring.js        # computePillars(inputs) + scoreOf(pillars)
-│   ├── rag.js            # RAG thresholds (Green ≥75, Amber 50-74, Red <50)
-│   ├── selectors.js      # allSpots, findSpot, clusterAvg
-│   └── merge.js          # mergeSubmissions — last-write-wins per (spotId, month)
+├── shared/core/            # Pure JS — imported by both client and server
+│   ├── scoring.js          # computePillars(inputs) + scoreOf(pillars)
+│   ├── rag.js              # RAG thresholds (Green ≥75, Amber 50-74, Red <50)
+│   ├── selectors.js        # allSpots, findSpot, clusterAvg
+│   ├── merge.js            # mergeSubmissions — last-write-wins per (spotId, month)
+│   └── sms-parser.js       # parseSMS(raw) → { spotId, month, inputs }
 ├── src/
-│   ├── auth/session.js   # localStorage session, RC_LIST, signIn/signOut
+│   ├── auth/session.js     # localStorage session, RC_LIST, signIn/signOut
 │   ├── data/
-│   │   ├── store.js      # IndexedDB (idb), getClusters, saveSubmission
-│   │   └── sync.js       # Flush pending → POST /api/checkins, sync state machine
-│   └── ui/               # Vanilla JS screens + components
+│   │   ├── store.js        # IndexedDB (idb), getClusters, saveSubmission
+│   │   └── sync.js         # Flush pending → POST /api/checkins, sync state machine
+│   └── ui/                 # Vanilla JS screens + components
 ├── server/
-│   ├── index.js          # Fastify API — POST /checkins, GET /network, GET /me
-│   └── db.js             # better-sqlite3, WAL mode, append-only submissions table
-└── seed/clusters.json    # 5 clusters, 16 Spots, seed check-in data
+│   ├── index.js            # Fastify API — registers routes, selects adapter
+│   ├── db.js               # better-sqlite3, WAL mode, append-only submissions table
+│   ├── adapters/
+│   │   ├── sqlite.js       # Default adapter — local SQLite store
+│   │   └── mock.js         # In-memory adapter + EduSpots integration contract
+│   └── routes/
+│       └── sms.js          # POST /api/sms — SMS/WhatsApp webhook handler
+├── docs/
+│   └── integration-contract.md  # EduSpots API contract and implementation checklist
+├── tests/
+│   └── sms-parser.test.js  # 14 unit tests (node:test), all passing
+└── seed/clusters.json      # 5 clusters, 16 Spots, seed check-in data
 ```
 
 **Client:** Vanilla JS ES modules, Vite, IndexedDB via `idb`, Workbox service worker.  
