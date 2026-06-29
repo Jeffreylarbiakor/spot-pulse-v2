@@ -1,6 +1,8 @@
 import { getSubmissions, updateSubmissionSyncState, getClusters } from './store.js';
 
-const ENDPOINT = '/api/checkins';
+// Unset in production (Vercel) — sync skips and shows "Saved locally"
+const API_BASE = import.meta.env.VITE_API_BASE;
+const ENDPOINT = API_BASE ? `${API_BASE}/checkins` : null;
 
 // Dispatched on window whenever a submission's syncState changes.
 // detail: { id, syncState }
@@ -9,6 +11,12 @@ function emitChange(id, syncState) {
 }
 
 async function syncOne(sub) {
+  if (!ENDPOINT) {
+    await updateSubmissionSyncState(sub.id, 'local');
+    emitChange(sub.id, 'local');
+    return;
+  }
+
   await updateSubmissionSyncState(sub.id, 'syncing');
   emitChange(sub.id, 'syncing');
 
@@ -55,8 +63,9 @@ export async function syncPending() {
   }
 }
 
-/** Register background sync triggers. Call once on app boot. */
+/** Register background sync triggers. No-op when no API is configured. */
 export function registerSyncTriggers() {
+  if (!ENDPOINT) return;
   window.addEventListener('online', syncPending);
   document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'visible') syncPending();

@@ -601,10 +601,11 @@ body {
   border-radius: var(--r-pill);
   font-family: var(--font-display);
 }
-.sync-badge.pending  { background: var(--amber-50); color: var(--amber-700); }
-.sync-badge.syncing  { background: var(--blue-50);  color: var(--blue-700); }
-.sync-badge.synced   { background: var(--green-50); color: var(--green-700); }
-.sync-badge.failed   { background: var(--danger-50);color: var(--danger); }
+.sync-badge.pending  { background: var(--amber-50);  color: var(--amber-700); }
+.sync-badge.syncing  { background: var(--blue-50);   color: var(--blue-700); }
+.sync-badge.synced   { background: var(--green-50);  color: var(--green-700); }
+.sync-badge.failed   { background: var(--danger-50); color: var(--danger); }
+.sync-badge.local    { background: var(--ink-100);   color: var(--ink-600); }
 
 /* ── Demo banner ── */
 .demo-banner {

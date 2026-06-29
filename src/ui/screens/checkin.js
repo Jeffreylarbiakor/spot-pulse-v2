@@ -149,7 +149,7 @@ export async function saveCheckin(spotId) {
     submittedAt: new Date().toISOString(),
     source: 'app',
     inputs,
-    syncState: 'pending',
+    syncState: import.meta.env.VITE_API_BASE ? 'pending' : 'local',
   };
   await saveSubmission(submission);
   lastSubmissionId = submission.id;

@@ -8,11 +8,12 @@ import { openSub, navTo } from '../router.js';
 import { syncPending } from '../../data/sync.js';
 
 const BADGE_CONFIG = {
-  pending:          { cls: 'pending', label: 'Pending sync',    showRetry: false },
-  syncing:          { cls: 'syncing', label: 'Syncing…',   showRetry: false },
-  synced:           { cls: 'synced',  label: 'Synced',          showRetry: false },
+  pending:          { cls: 'pending', label: 'Pending sync',     showRetry: false },
+  syncing:          { cls: 'syncing', label: 'Syncing…',         showRetry: false },
+  synced:           { cls: 'synced',  label: 'Synced',           showRetry: false },
   'synced-updated': { cls: 'synced',  label: 'Synced (updated)', showRetry: false },
-  failed:           { cls: 'failed',  label: 'Sync failed',     showRetry: true  },
+  failed:           { cls: 'failed',  label: 'Sync failed',      showRetry: true  },
+  local:            { cls: 'local',   label: 'Saved locally',    showRetry: false },
 };
 
 function badgeHTML(state) {
