@@ -1,14 +1,14 @@
 import SEED from '../../seed/clusters.json' assert { type: 'json' };
 
 const KEY = 'sp-session';
-const DEMO = { mode: 'demo', rc: null };
+const ADMIN = { mode: 'admin', rc: null };
 
 export function getSession() {
   try {
     const raw = localStorage.getItem(KEY);
-    return raw ? JSON.parse(raw) : DEMO;
+    return raw ? JSON.parse(raw) : ADMIN;
   } catch {
-    return DEMO;
+    return ADMIN;
   }
 }
 
@@ -20,7 +20,7 @@ export function signIn(rc) {
 
 export function signOut() {
   localStorage.removeItem(KEY);
-  window.dispatchEvent(new CustomEvent('spot-pulse:session-changed', { detail: DEMO }));
+  window.dispatchEvent(new CustomEvent('spot-pulse:session-changed', { detail: ADMIN }));
 }
 
 // RC list derived from seed — used by the sign-in overlay

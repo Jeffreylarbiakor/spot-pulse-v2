@@ -3,7 +3,7 @@ import { MONTHS } from '../../data/store.js';
 const TAB_SUB = {
   home:  'EduSpots network health',
   spots: 'Network directory',
-  about: 'About this demo',
+  about: 'About Spot Pulse',
 };
 
 export function renderTopbar(tab, monthIndex, onMonthChange) {

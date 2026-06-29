@@ -29,10 +29,10 @@ function renderSessionStrip(session) {
       <button id="signOutBtn" aria-label="Sign out">Sign out</button>`;
     el.querySelector('#signOutBtn').addEventListener('click', signOut);
   } else {
-    el.className = 'session-strip demo';
+    el.className = 'session-strip admin';
     el.innerHTML = `
-      <span>Demo mode · Illustrative data only</span>
-      <button id="signInBtn" aria-label="Sign in as Regional Coordinator">Sign in as RC →</button>`;
+      <span>Head of Programmes · All clusters</span>
+      <button id="signInBtn" aria-label="Sign in as Regional Coordinator">Sign in as RC</button>`;
     el.querySelector('#signInBtn').addEventListener('click', showSignInOverlay);
   }
   return el;

@@ -645,7 +645,7 @@ body {
   }
 }
 
-/* ── Session strip (demo / RC mode indicator) ── */
+/* ── Session strip (admin / RC mode indicator) ── */
 .session-strip {
   flex: none;
   display: flex;
@@ -657,10 +657,10 @@ body {
   font-weight: 600;
   gap: 8px;
 }
-.session-strip.demo {
-  background: var(--amber-50);
-  border-bottom: 1px solid var(--amber-100);
-  color: var(--amber-700);
+.session-strip.admin {
+  background: var(--blue-50);
+  border-bottom: 1px solid var(--blue-100);
+  color: var(--blue-700);
 }
 .session-strip.rc {
   background: var(--green-50);
