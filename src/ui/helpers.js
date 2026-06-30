@@ -26,8 +26,15 @@ export function ringSVG(score, ragObj, ariaLabel) {
 }
 
 export function donutSVG(g, a, r, ariaLabel) {
-  const t = g + a + r || 1, R = 52, C = 2 * Math.PI * R, gap = 2;
+  const R = 52, C = 2 * Math.PI * R, gap = 2;
   const label = ariaLabel ?? `RAG distribution: ${g} Green, ${a} Amber, ${r} Red`;
+  const isEmpty = g + a + r === 0;
+  if (isEmpty) {
+    return `<svg width="140" height="140" viewBox="0 0 140 140" style="transform:rotate(-90deg)" role="img" aria-label="${label}">
+      <circle r="${R}" cx="70" cy="70" fill="none" stroke="var(--ink-100)" stroke-width="20"/>
+    </svg>`;
+  }
+  const t = g + a + r;
   const seg = (v, col, off) => {
     const len = (v / t) * C;
     return `<circle r="${R}" cx="70" cy="70" fill="none" stroke="${col}" stroke-width="20" stroke-dasharray="${Math.max(len - gap, 0)} ${C - Math.max(len - gap, 0)}" stroke-dashoffset="${-off}"/>`;

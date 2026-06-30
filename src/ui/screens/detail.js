@@ -13,8 +13,10 @@ const PILLAR_DEFS = [
 
 export function renderDetail(spotId) {
   const { spot: s, cluster: c } = findSpot(getClusters(), spotId);
-  const sc = s.pillars.access + s.pillars.engagement + s.pillars.support + s.pillars.governance;
-  const r = rag(sc);
+  const sc = s.pillars
+    ? s.pillars.access + s.pillars.engagement + s.pillars.support + s.pillars.governance
+    : null;
+  const r = sc != null ? rag(sc) : null;
 
   const progs = s.programmes.map(p => `<span class="tag prog">${esc(p)}</span>`).join('');
 
@@ -27,14 +29,14 @@ export function renderDetail(spotId) {
     ['Year established',   s.year],
   ].map(([k, v]) => `<div><div class="k">${k}</div><div class="vv">${esc(v)}</div></div>`).join('');
 
-  const pillars = PILLAR_DEFS.map(([key, label, max]) => {
+  const pillars = s.pillars ? PILLAR_DEFS.map(([key, label, max]) => {
     const v = s.pillars[key];
     const pct = Math.round(v / max * 100);
     return `<div class="pillar">
       <div class="top"><span class="pn">${label}</span><span class="pv"><b>${v}</b> / ${max}</span></div>
       <div class="track"><i style="width:${pct}%"></i></div>
     </div>`;
-  }).join('');
+  }).join('') : `<p style="color:var(--ink-400);margin:0">No check-in submitted for this month yet.</p>`;
 
   const pts = MONTHS.map((m, i) => ({ label: m.split(' ')[0], v: s.trend[i] }));
   const last2 = pts.filter(p => p.v != null).slice(-2);
@@ -58,8 +60,10 @@ export function renderDetail(spotId) {
     </div>
     <div class="card" style="margin-top:14px;text-align:center">
       <div class="ring-wrap">
-        <div class="ring">${ringSVG(sc, r, `${esc(s.name)}: score ${sc} out of 100, ${r.label}`)}<div class="ctr"><span class="num">${sc}</span><span class="of">/ 100</span></div></div>
-        <span class="chip ${r.cls}" style="font-size:14px"><span class="dot"></span>${r.label}</span>
+        ${sc != null
+          ? `<div class="ring">${ringSVG(sc, r, `${esc(s.name)}: score ${sc} out of 100, ${r.label}`)}<div class="ctr"><span class="num">${sc}</span><span class="of">/ 100</span></div></div>
+             <span class="chip ${r.cls}" style="font-size:14px"><span class="dot"></span>${r.label}</span>`
+          : `<p style="color:var(--ink-400);margin:8px 0">No check-in for this month</p>`}
       </div>
     </div>
     <div class="card" style="margin-top:14px"><div class="section-title" style="margin-bottom:14px">Pillar breakdown</div>${pillars}</div>

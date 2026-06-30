@@ -6,18 +6,22 @@ import { esc, icon, disclaimerHTML } from '../helpers.js';
 import { openSub } from '../router.js';
 
 function scoreOf(s) {
+  if (!s.pillars) return null;
   return s.pillars.access + s.pillars.engagement + s.pillars.support + s.pillars.governance;
 }
 
 function spotRowHTML(s) {
   const sc = scoreOf(s);
-  const r = rag(sc);
-  return `<button class="spotrow" data-spot="${s.id}" aria-label="${esc(s.name)}, score ${sc}, ${r.key}">
+  const r = sc != null ? rag(sc) : null;
+  const chip = sc != null
+    ? `<span class="chip ${r.cls}"><span class="dot"></span>${sc} · ${r.key}</span>`
+    : `<span class="chip grey">No check-in</span>`;
+  return `<button class="spotrow" data-spot="${s.id}" aria-label="${esc(s.name)}${sc != null ? `, score ${sc}, ${r.key}` : ', no check-in yet'}">
     <div class="meta">
       <div class="sn">${esc(s.name)} ${s.induction ? '<span class="tag induct">Induction Phase</span>' : ''}</div>
       <div class="reg">${esc(s.community)} · ${esc(s.region)}</div>
     </div>
-    <span class="chip ${r.cls}"><span class="dot"></span>${sc} · ${r.key}</span>
+    ${chip}
     ${icon('chev', 'chev')}
   </button>`;
 }

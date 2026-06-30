@@ -1,5 +1,9 @@
 {
-  "months": ["Apr 2026", "May 2026", "Jun 2026"],
+  "months": [
+    "Apr 2026",
+    "May 2026",
+    "Jun 2026"
+  ],
   "reportingMonth": "Jun 2026",
   "clusters": [
     {
@@ -7,10 +11,75 @@
       "rc": "Getrude Akunlibe",
       "rcId": "rc-001",
       "spots": [
-        { "id": "abofour",  "name": "Abofour Spot",  "community": "Abofour",  "district": "Offinso North", "region": "Ashanti",     "year": 2015, "programmes": ["EduKidz","DigiLit","EcoSTEM"],         "pillars": { "access": 23, "engagement": 18, "support": 23, "governance": 28 }, "trend": [86, 86, 92] },
-        { "id": "akumadan", "name": "Akumadan Spot", "community": "Akumadan", "district": "Offinso North", "region": "Ashanti",     "year": 2017, "programmes": ["EduKidz","DigiLit"],                  "pillars": { "access": 21, "engagement": 15, "support": 20, "governance": 25 }, "trend": [78, 80, 81] },
-        { "id": "nkenkaasu","name": "Nkenkaasu Spot","community": "Nkenkaasu","district": "Offinso North", "region": "Ashanti",     "year": 2025, "programmes": ["EduKidz"],                            "induction": true, "pillars": { "access": 16, "engagement": 12, "support": 16, "governance": 20 }, "trend": [null, 60, 64] },
-        { "id": "sankore",  "name": "Sankore Spot",  "community": "Sankore",  "district": "Asunafo South", "region": "Ahafo",       "year": 2021, "programmes": ["EduKidz","Ignite Equity"],             "pillars": { "access": 19, "engagement": 14, "support": 18, "governance": 22 }, "trend": [70, 71, 73] }
+        {
+          "id": "abofour",
+          "name": "Abofour Spot",
+          "community": "Abofour",
+          "district": "Offinso North",
+          "region": "Ashanti",
+          "year": 2015,
+          "programmes": [
+            "EduKidz",
+            "DigiLit",
+            "EcoSTEM"
+          ],
+          "trend": [
+            86,
+            86,
+            null
+          ]
+        },
+        {
+          "id": "akumadan",
+          "name": "Akumadan Spot",
+          "community": "Akumadan",
+          "district": "Offinso North",
+          "region": "Ashanti",
+          "year": 2017,
+          "programmes": [
+            "EduKidz",
+            "DigiLit"
+          ],
+          "trend": [
+            78,
+            80,
+            null
+          ]
+        },
+        {
+          "id": "nkenkaasu",
+          "name": "Nkenkaasu Spot",
+          "community": "Nkenkaasu",
+          "district": "Offinso North",
+          "region": "Ashanti",
+          "year": 2025,
+          "programmes": [
+            "EduKidz"
+          ],
+          "induction": true,
+          "trend": [
+            null,
+            60,
+            null
+          ]
+        },
+        {
+          "id": "sankore",
+          "name": "Sankore Spot",
+          "community": "Sankore",
+          "district": "Asunafo South",
+          "region": "Ahafo",
+          "year": 2021,
+          "programmes": [
+            "EduKidz",
+            "Ignite Equity"
+          ],
+          "trend": [
+            70,
+            71,
+            null
+          ]
+        }
       ]
     },
     {
@@ -18,9 +87,57 @@
       "rc": "Mawuli Agbeko",
       "rcId": "rc-002",
       "spots": [
-        { "id": "dzodze",   "name": "Dzodze Spot",   "community": "Dzodze",   "district": "Ketu North",    "region": "Volta",       "year": 2019, "programmes": ["EduKidz","DigiLit"],                  "pillars": { "access": 20, "engagement": 16, "support": 20, "governance": 23 }, "trend": [76, 77, 79] },
-        { "id": "kpando",   "name": "Kpando Spot",   "community": "Kpando",   "district": "Kpando",        "region": "Volta",       "year": 2020, "programmes": ["DigiLit","EcoSTEM"],                  "pillars": { "access": 18, "engagement": 14, "support": 18, "governance": 20 }, "trend": [68, 69, 70] },
-        { "id": "hohoe",    "name": "Hohoe Spot",    "community": "Hohoe",    "district": "Hohoe",         "region": "Volta",       "year": 2025, "programmes": ["EduKidz"],                            "induction": true, "pillars": { "access": 18, "engagement": 15, "support": 18, "governance": 21 }, "trend": [null, 70, 72] }
+        {
+          "id": "dzodze",
+          "name": "Dzodze Spot",
+          "community": "Dzodze",
+          "district": "Ketu North",
+          "region": "Volta",
+          "year": 2019,
+          "programmes": [
+            "EduKidz",
+            "DigiLit"
+          ],
+          "trend": [
+            76,
+            77,
+            null
+          ]
+        },
+        {
+          "id": "kpando",
+          "name": "Kpando Spot",
+          "community": "Kpando",
+          "district": "Kpando",
+          "region": "Volta",
+          "year": 2020,
+          "programmes": [
+            "DigiLit",
+            "EcoSTEM"
+          ],
+          "trend": [
+            68,
+            69,
+            null
+          ]
+        },
+        {
+          "id": "hohoe",
+          "name": "Hohoe Spot",
+          "community": "Hohoe",
+          "district": "Hohoe",
+          "region": "Volta",
+          "year": 2025,
+          "programmes": [
+            "EduKidz"
+          ],
+          "induction": true,
+          "trend": [
+            null,
+            70,
+            null
+          ]
+        }
       ]
     },
     {
@@ -28,9 +145,57 @@
       "rc": "Fatima Alhassan",
       "rcId": "rc-003",
       "spots": [
-        { "id": "tamale",   "name": "Tamale Spot",   "community": "Tamale",   "district": "Tamale Metro",  "region": "Northern",    "year": 2018, "programmes": ["DigiLit","Ignite Equity"],             "pillars": { "access": 18, "engagement": 14, "support": 18, "governance": 21 }, "trend": [69, 70, 71] },
-        { "id": "bolga",    "name": "Bolgatanga Spot","community": "Bolgatanga","district":"Bolgatanga Municipal","region":"Upper East","year":2020,"programmes": ["EduKidz","EcoSTEM"],                  "pillars": { "access": 17, "engagement": 13, "support": 17, "governance": 19 }, "trend": [64, 65, 66] },
-        { "id": "savelugu", "name": "Savelugu Spot", "community": "Savelugu", "district": "Savelugu Municipal","region":"Northern",  "year": 2025, "programmes": ["EduKidz"],                            "induction": true, "pillars": { "access": 12, "engagement": 9, "support": 12, "governance": 15 }, "trend": [null, 45, 48] }
+        {
+          "id": "tamale",
+          "name": "Tamale Spot",
+          "community": "Tamale",
+          "district": "Tamale Metro",
+          "region": "Northern",
+          "year": 2018,
+          "programmes": [
+            "DigiLit",
+            "Ignite Equity"
+          ],
+          "trend": [
+            69,
+            70,
+            null
+          ]
+        },
+        {
+          "id": "bolga",
+          "name": "Bolgatanga Spot",
+          "community": "Bolgatanga",
+          "district": "Bolgatanga Municipal",
+          "region": "Upper East",
+          "year": 2020,
+          "programmes": [
+            "EduKidz",
+            "EcoSTEM"
+          ],
+          "trend": [
+            64,
+            65,
+            null
+          ]
+        },
+        {
+          "id": "savelugu",
+          "name": "Savelugu Spot",
+          "community": "Savelugu",
+          "district": "Savelugu Municipal",
+          "region": "Northern",
+          "year": 2025,
+          "programmes": [
+            "EduKidz"
+          ],
+          "induction": true,
+          "trend": [
+            null,
+            45,
+            null
+          ]
+        }
       ]
     },
     {
@@ -38,9 +203,57 @@
       "rc": "Esi Mensah",
       "rcId": "rc-004",
       "spots": [
-        { "id": "capecoast","name": "Cape Coast Spot","community": "Cape Coast","district":"Cape Coast Metro","region":"Central",    "year": 2016, "programmes": ["EduKidz","DigiLit","Ignite Equity"],  "pillars": { "access": 22, "engagement": 17, "support": 21, "governance": 26 }, "trend": [83, 84, 86] },
-        { "id": "elmina",   "name": "Elmina Spot",   "community": "Elmina",   "district": "KEEA",          "region": "Central",    "year": 2018, "programmes": ["EduKidz","EcoSTEM"],                  "pillars": { "access": 21, "engagement": 16, "support": 21, "governance": 25 }, "trend": [80, 82, 83] },
-        { "id": "takoradi", "name": "Takoradi Spot", "community": "Takoradi", "district":"Sekondi-Takoradi","region":"Western",     "year": 2019, "programmes": ["DigiLit"],                            "pillars": { "access": 19, "engagement": 15, "support": 19, "governance": 22 }, "trend": [73, 74, 75] }
+        {
+          "id": "capecoast",
+          "name": "Cape Coast Spot",
+          "community": "Cape Coast",
+          "district": "Cape Coast Metro",
+          "region": "Central",
+          "year": 2016,
+          "programmes": [
+            "EduKidz",
+            "DigiLit",
+            "Ignite Equity"
+          ],
+          "trend": [
+            83,
+            84,
+            null
+          ]
+        },
+        {
+          "id": "elmina",
+          "name": "Elmina Spot",
+          "community": "Elmina",
+          "district": "KEEA",
+          "region": "Central",
+          "year": 2018,
+          "programmes": [
+            "EduKidz",
+            "EcoSTEM"
+          ],
+          "trend": [
+            80,
+            82,
+            null
+          ]
+        },
+        {
+          "id": "takoradi",
+          "name": "Takoradi Spot",
+          "community": "Takoradi",
+          "district": "Sekondi-Takoradi",
+          "region": "Western",
+          "year": 2019,
+          "programmes": [
+            "DigiLit"
+          ],
+          "trend": [
+            73,
+            74,
+            null
+          ]
+        }
       ]
     },
     {
@@ -48,9 +261,59 @@
       "rc": "Kwabena Owusu",
       "rcId": "rc-005",
       "spots": [
-        { "id": "koforidua","name": "Koforidua Spot","community": "Koforidua","district": "New Juaben",    "region": "Eastern",    "year": 2017, "programmes": ["EduKidz","DigiLit","EcoSTEM","Ignite Equity"], "pillars": { "access": 23, "engagement": 18, "support": 22, "governance": 25 }, "trend": [85, 86, 88] },
-        { "id": "nsawam",   "name": "Nsawam Spot",   "community": "Nsawam",   "district":"Nsawam Adoagyiri","region":"Eastern",    "year": 2019, "programmes": ["EduKidz","DigiLit"],                  "pillars": { "access": 22, "engagement": 16, "support": 21, "governance": 25 }, "trend": [82, 83, 84] },
-        { "id": "teshie",   "name": "Teshie Spot",   "community": "Teshie",   "district": "Ledzokuku",    "region": "Greater Accra","year":2025, "programmes": ["EduKidz"],                            "induction": true, "pillars": { "access": 13, "engagement": 10, "support": 13, "governance": 15 }, "trend": [null, 49, 51] }
+        {
+          "id": "koforidua",
+          "name": "Koforidua Spot",
+          "community": "Koforidua",
+          "district": "New Juaben",
+          "region": "Eastern",
+          "year": 2017,
+          "programmes": [
+            "EduKidz",
+            "DigiLit",
+            "EcoSTEM",
+            "Ignite Equity"
+          ],
+          "trend": [
+            85,
+            86,
+            null
+          ]
+        },
+        {
+          "id": "nsawam",
+          "name": "Nsawam Spot",
+          "community": "Nsawam",
+          "district": "Nsawam Adoagyiri",
+          "region": "Eastern",
+          "year": 2019,
+          "programmes": [
+            "EduKidz",
+            "DigiLit"
+          ],
+          "trend": [
+            82,
+            83,
+            null
+          ]
+        },
+        {
+          "id": "teshie",
+          "name": "Teshie Spot",
+          "community": "Teshie",
+          "district": "Ledzokuku",
+          "region": "Greater Accra",
+          "year": 2025,
+          "programmes": [
+            "EduKidz"
+          ],
+          "induction": true,
+          "trend": [
+            null,
+            49,
+            null
+          ]
+        }
       ]
     }
   ]

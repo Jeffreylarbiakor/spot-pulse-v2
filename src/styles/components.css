@@ -214,6 +214,7 @@ body {
 .chip.amber .dot { background: var(--amber-500); }
 .chip.red { background: var(--danger-50); color: var(--danger); }
 .chip.red .dot { background: var(--danger); }
+.chip.grey { background: var(--ink-100); color: var(--ink-500); }
 
 /* ── Tags ── */
 .tag {

@@ -5,18 +5,19 @@ import { esc, icon, disclaimerHTML } from '../helpers.js';
 import { openSub } from '../router.js';
 
 function scoreOf(s) {
+  if (!s.pillars) return null;
   return s.pillars.access + s.pillars.engagement + s.pillars.support + s.pillars.governance;
 }
 
 function checkinRowHTML(s) {
   const sc = scoreOf(s);
-  const r = rag(sc);
+  const r = sc != null ? rag(sc) : null;
   return `<button class="spotrow" data-spot="${s.id}" aria-label="Check in ${esc(s.name)}">
     <div class="meta">
       <div class="sn">${esc(s.name)}</div>
       <div class="reg">${esc(s.community)} · ${esc(s.region)}</div>
     </div>
-    <span class="chip ${r.cls}"><span class="dot"></span>${sc}</span>
+    ${sc != null ? `<span class="chip ${r.cls}"><span class="dot"></span>${sc}</span>` : `<span class="chip grey">No check-in</span>`}
     ${icon('chev', 'chev')}
   </button>`;
 }
