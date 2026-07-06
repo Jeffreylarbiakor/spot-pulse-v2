@@ -58,30 +58,30 @@ const seed = {
   reportingMonth: 'Jun 2026',
   clusters: [
 
-    // ── 1. Northern & Overseas Cluster ───────────────────────────────────────
+    // ── 1. Volta ─────────────────────────────────────────────────────────────
     {
-      name: 'Northern & Overseas',
-      rc: 'Getrude Akunlibe',
+      name: 'Volta',
+      rc: 'Cynthia Mawuena Tetteh',
       rcId: 'rc-001',
       spots: [
-        // Active (6)
-        S('bimbilla',         'Bimbilla Spot',              'Bimbilla',         'Nanumba North',          'Northern',        2019, ['EduKidz','DigiLit'],                        'average'),
-        S('dulugu',           'Dulugu Spot',                'Dulugu',           'Tolon District',         'Northern',        2017, ['EduKidz','DigiLit','EcoSTEM'],              'good'),
-        S('kalpohin',         'Kalpohin Spot',              'Kalpohin',         'Savelugu Municipal',     'Northern',        2019, ['EduKidz','DigiLit','Ignite Equity'],        'good'),
-        S('sakasaka',         'Sakasaka Spot',              'Sakasaka',         'Tamale Metro',           'Northern',        2018, ['EduKidz','DigiLit'],                        'average'),
-        S('savelugu',         'Savelugu Spot',              'Savelugu',         'Savelugu Municipal',     'Northern',        2019, ['EduKidz'],                                  'average'),
-        S('zangbalun',        'Zangbalun Spot',             'Zangbalun',        'Kumbungu District',      'Northern',        2022, ['EduKidz','DigiLit'],                        'average'),
-        // New 2024 — Induction (4)
-        S('gambibgo',         'Gambibgo Spot',              'Gambibgo',         'Gambibgo District',      'Upper East',      2024, ['EduKidz'],                                  'induction', true),
-        S('katanga-zuarungu', 'Katanga-Zuarungu Spot',      'Katanga-Zuarungu', 'Bolgatanga Municipal',   'Upper East',      2024, ['EduKidz'],                                  'induction', true),
-        S('kumbungu-zamigu',  'Kumbungu Zamigu Spot',       'Kumbungu Zamigu',  'Kumbungu District',      'Northern',        2024, ['EduKidz'],                                  'induction', true),
-        S('piisie',           'Piisie Spot',                'Piisie',           'Kumbungu District',      'Northern',        2024, ['EduKidz'],                                  'induction', true),
+        // Active (8)
+        S('agbledomi',        'Agbledomi Spot',             'Agbledomi',        'Agortime-Ziope',         'Volta',           2020, ['EduKidz','DigiLit'],                        'average'),
+        S('atsata-bame',      'Atsata Bame Spot',           'Atsata Bame',      'Volta Region',           'Volta',           2021, ['EduKidz'],                                  'average'),
+        S('atanve',           'Atanve Spot',                'Atanve',           'Agortime-Ziope',         'Volta',           2019, ['EduKidz','DigiLit'],                        'average'),
+        S('dodome-awuiasu',   'Dodome Awuiasu Spot',        'Dodome Awuiasu',   'Akatsi North',           'Volta',           2021, ['EduKidz','EcoSTEM'],                        'average'),
+        S('metstrikasa',      'Metstrikasa Spot',           'Metstrikasa',      'Ketu North',             'Volta',           2021, ['EduKidz','DigiLit'],                        'average'),
+        S('posmonu',          'Posmonu Spot',               'Ave Posmonu',      'Central Tongu',          'Volta',           2016, ['EduKidz','DigiLit','EcoSTEM','Ignite Equity'], 'high'),
+        S('takuve',           'Takuve Spot',                'Takuve',           'Agortime-Ziope',         'Volta',           2018, ['EduKidz','DigiLit','Ignite Equity'],        'good'),
+        S('wodome-akatsi',    'Wodome Akatsi Spot',         'Wodome',           'Akatsi South',           'Volta',           2020, ['EduKidz','DigiLit'],                        'average'),
+        // Legacy (2)
+        L('apegusu',          'Apegusu Spot',               'Apegusu',          'Volta Region',           'Volta'),
+        L('kodzi',            'Kodzi Spot',                 'Kodzi',            'Volta Region',           'Volta'),
       ],
     },
 
-    // ── 2. Middle Cluster ────────────────────────────────────────────────────
+    // ── 2. Middle ────────────────────────────────────────────────────────────
     {
-      name: 'Middle Cluster (Ashanti, Bono & Ahafo)',
+      name: 'Middle',
       rc: 'Yahya Seidu',
       rcId: 'rc-002',
       spots: [
@@ -99,23 +99,38 @@ const seed = {
         S('nkonya',           'Nkonya Spot',                'Nkonya',           'Nkoranza South',         'Bono',            2022, ['EduKidz'],                                  'average'),
         S('sefwi-asanteman',  'Sefwi Asanteman Spot',       'Sefwi Asanteman',  'Bibiani-Anhwiaso-Bekwai','Western North',   2022, ['EduKidz','DigiLit'],                        'average'),
         S('yamfo',            'Yamfo Spot',                 'Yamfo',            'Tano South',             'Ahafo',           2020, ['EduKidz','DigiLit'],                        'good'),
-        // New 2024 — Induction (3)
-        S('dormaa-aboabo',    'Dormaa Ahenkro Aboabo No.4', 'Dormaa Ahenkro',   'Dormaa Central',         'Bono',            2024, ['EduKidz'],                                  'induction', true),
-        S('kato-berekum',     'Kato-Berekum Spot',          'Kato',             'Berekum East',           'Bono',            2024, ['EduKidz'],                                  'induction', true),
-        S('soko',             'Soko Spot',                  'Soko',             'Afigya Kwabre',          'Ashanti',         2024, ['EduKidz'],                                  'induction', true),
         // Legacy (2)
         L('dichemso',         'Dichemso Spot',              'Dichemso',         'Kumasi Metro',           'Ashanti'),
         L('tease',            'Tease Spot',                 'Tease',            'Ashanti Region',         'Ashanti'),
       ],
     },
 
-    // ── 3. Central/Western Cluster ───────────────────────────────────────────
+    // ── 3. Northern ──────────────────────────────────────────────────────────
+    {
+      name: 'Northern',
+      rc: 'Getrude Akunlibe',
+      rcId: 'rc-003',
+      spots: [
+        // Active (7 — includes Joska, Kenya as the "Overseas" Spot)
+        S('bimbilla',         'Bimbilla Spot',              'Bimbilla',         'Nanumba North',          'Northern',        2019, ['EduKidz','DigiLit'],                        'average'),
+        S('dulugu',           'Dulugu Spot',                'Dulugu',           'Tolon District',         'Northern',        2017, ['EduKidz','DigiLit','EcoSTEM'],              'good'),
+        S('joska',            'Joska Spot',                 'Joska',            'Mavoko Sub-County',      'Machakos (Kenya)',2023, ['EduKidz'],                                  'average'),
+        S('kalpohin',         'Kalpohin Spot',              'Kalpohin',         'Savelugu Municipal',     'Northern',        2019, ['EduKidz','DigiLit','Ignite Equity'],        'good'),
+        S('sakasaka',         'Sakasaka Spot',              'Sakasaka',         'Tamale Metro',           'Northern',        2018, ['EduKidz','DigiLit'],                        'average'),
+        S('savelugu',         'Savelugu Spot',              'Savelugu',         'Savelugu Municipal',     'Northern',        2019, ['EduKidz'],                                  'average'),
+        S('zangbalun',        'Zangbalun Spot',             'Zangbalun',        'Kumbungu District',      'Northern',        2022, ['EduKidz','DigiLit'],                        'average'),
+        // Legacy (1)
+        L('badili-zone',      'Badili Zone Spot',           'Badili',           'Nairobi County',         'Nairobi (Kenya)'),
+      ],
+    },
+
+    // ── 4. Central/Western ───────────────────────────────────────────────────
     {
       name: 'Central/Western',
       rc: 'Abdul Wadud Suleiman',
-      rcId: 'rc-003',
+      rcId: 'rc-004',
       spots: [
-        // Active (11)
+        // Active (12 — includes Teshie, Greater Accra)
         S('ampatano',         'Ampatano Spot',              'Ampatano',         'Ahanta West',            'Western',         2019, ['EduKidz','DigiLit','Ignite Equity'],        'good'),
         S('asemkow',          'Asemkow Spot',               'Asemkow',          'Ahanta West',            'Western',         2020, ['EduKidz','DigiLit'],                        'average'),
         S('bosomadwe',        'Bosomadwe Spot',             'Bosomadwe',        'Assin North',            'Central',         2020, ['EduKidz','EcoSTEM'],                        'average'),
@@ -127,60 +142,35 @@ const seed = {
         S('kotokoli-zongo',   'Kotokoli Zongo Spot',        'Kotokoli Zongo',   'Kumasi Metro',           'Ashanti',         2022, ['EduKidz','DigiLit'],                        'average'),
         S('new-ebu',          'New Ebu Spot',               'New Ebu',          'Ahanta District',        'Western',         2022, ['EduKidz'],                                  'average'),
         S('sanzule',          'Sanzule Spot',               'Sanzule',          'Ellembelle District',    'Western',         2021, ['EduKidz','EcoSTEM'],                        'average'),
-        // New 2024 — Induction (2)
-        S('asemasa',          'Asemasa Spot',               'Butre',            'Ahanta West',            'Western',         2024, ['EduKidz'],                                  'induction', true),
-        S('kejabil',          'Kejabil Spot',               'Kejabil',          'Ahanta West',            'Western',         2024, ['EduKidz'],                                  'induction', true),
+        S('teshie',           'Teshie Spot',                'Teshie',           'Ledzokuku',              'Greater Accra',   2025, ['EduKidz'],                                  'average'),
         // Legacy (2)
-        L('cape-3-points',    'Cape 3 Points Spot',         'Cape Three Points', 'Ahanta West',           'Western'),
+        L('cape-3-points',    'Cape 3 Points Spot',         'Cape Three Points','Ahanta West',            'Western'),
         L('new-atuabo',       'New Atuabo Spot',            'New Atuabo',       'Ellembelle District',    'Western'),
       ],
     },
 
-    // ── 4. Volta Cluster ─────────────────────────────────────────────────────
+    // ── 5. New Spots ─────────────────────────────────────────────────────────
+    // Cross-network induction cluster — all spots admitted 2024, being onboarded
     {
-      name: 'Volta',
-      rc: 'Cynthia Mawuena Tetteh',
-      rcId: 'rc-004',
-      spots: [
-        // Active (8)
-        S('agbledomi',        'Agbledomi Spot',             'Agbledomi',        'Agortime-Ziope',         'Volta',           2020, ['EduKidz','DigiLit'],                        'average'),
-        S('atsata-bame',      'Atsata Bame Spot',           'Atsata Bame',      'Volta Region',           'Volta',           2021, ['EduKidz'],                                  'average'),
-        S('atanve',           'Atanve Spot',                'Atanve',           'Agortime-Ziope',         'Volta',           2019, ['EduKidz','DigiLit'],                        'average'),
-        S('dodome-awuiasu',   'Dodome Awuiasu Spot',        'Dodome Awuiasu',   'Akatsi North',           'Volta',           2021, ['EduKidz','EcoSTEM'],                        'average'),
-        S('metstrikasa',      'Metstrikasa Spot',           'Metstrikasa',      'Ketu North',             'Volta',           2021, ['EduKidz','DigiLit'],                        'average'),
-        S('posmonu',          'Posmonu Spot',               'Ave Posmonu',      'Central Tongu',          'Volta',           2016, ['EduKidz','DigiLit','EcoSTEM','Ignite Equity'], 'high'),
-        S('takuve',           'Takuve Spot',                'Takuve',           'Agortime-Ziope',         'Volta',           2018, ['EduKidz','DigiLit','Ignite Equity'],        'good'),
-        S('wodome-akatsi',    'Wodome Akatsi Spot',         'Wodome',           'Akatsi South',           'Volta',           2020, ['EduKidz','DigiLit'],                        'average'),
-        // New 2024 — Induction (2)
-        S('abutia',           'Abutia Spot',                'Abutia',           'Ho Municipal',           'Volta',           2024, ['EduKidz'],                                  'induction', true),
-        S('ho-kpenue',        'Ho-Kpenue Spot',             'Ho-Kpenue',        'Ho Municipal',           'Volta',           2024, ['EduKidz'],                                  'induction', true),
-        // Legacy (2)
-        L('apegusu',          'Apegusu Spot',               'Apegusu',          'Volta Region',           'Volta'),
-        L('kodzi',            'Kodzi Spot',                 'Kodzi',            'Volta Region',           'Volta'),
-      ],
-    },
-
-    // ── 5. Eastern & Greater Accra ───────────────────────────────────────────
-    {
-      name: 'Eastern & Greater Accra',
-      rc: 'Kwabena Owusu',
+      name: 'New Spots',
+      rc: 'Abdul-Malik Iddrisu',
       rcId: 'rc-005',
       spots: [
-        // Active (1)
-        S('teshie',           'Teshie Spot',                'Teshie',           'Ledzokuku',              'Greater Accra',   2025, ['EduKidz'],                                  'average'),
-      ],
-    },
-
-    // ── 6. Kenya ─────────────────────────────────────────────────────────────
-    {
-      name: 'Kenya',
-      rc: 'Kenya Coordinator',
-      rcId: 'rc-006',
-      spots: [
-        // Active (1)
-        S('joska',            'Joska Spot',                 'Joska',            'Mavoko Sub-County',      'Machakos (Kenya)',2023, ['EduKidz'],                                  'average'),
-        // Legacy (1)
-        L('badili-zone',      'Badili Zone Spot',           'Badili',           'Nairobi County',         'Nairobi (Kenya)'),
+        // From Volta geography (2)
+        S('abutia',           'Abutia Spot',                'Abutia',           'Ho Municipal',           'Volta',           2024, ['EduKidz'],                                  'induction', true),
+        S('ho-kpenue',        'Ho-Kpenue Spot',             'Ho-Kpenue',        'Ho Municipal',           'Volta',           2024, ['EduKidz'],                                  'induction', true),
+        // From Middle geography (3)
+        S('dormaa-aboabo',    'Dormaa Ahenkro Aboabo No.4', 'Dormaa Ahenkro',   'Dormaa Central',         'Bono',            2024, ['EduKidz'],                                  'induction', true),
+        S('kato-berekum',     'Kato-Berekum Spot',          'Kato',             'Berekum East',           'Bono',            2024, ['EduKidz'],                                  'induction', true),
+        S('soko',             'Soko Spot',                  'Soko',             'Afigya Kwabre',          'Ashanti',         2024, ['EduKidz'],                                  'induction', true),
+        // From Central/Western geography (2)
+        S('asemasa',          'Asemasa Spot',               'Butre',            'Ahanta West',            'Western',         2024, ['EduKidz'],                                  'induction', true),
+        S('kejabil',          'Kejabil Spot',               'Kejabil',          'Ahanta West',            'Western',         2024, ['EduKidz'],                                  'induction', true),
+        // From Northern geography (4)
+        S('gambibgo',         'Gambibgo Spot',              'Gambibgo',         'Gambibgo District',      'Upper East',      2024, ['EduKidz'],                                  'induction', true),
+        S('katanga-zuarungu', 'Katanga-Zuarungu Spot',      'Katanga-Zuarungu', 'Bolgatanga Municipal',   'Upper East',      2024, ['EduKidz'],                                  'induction', true),
+        S('kumbungu-zamigu',  'Kumbungu Zamigu Spot',       'Kumbungu Zamigu',  'Kumbungu District',      'Northern',        2024, ['EduKidz'],                                  'induction', true),
+        S('piisie',           'Piisie Spot',                'Piisie',           'Kumbungu District',      'Northern',        2024, ['EduKidz'],                                  'induction', true),
       ],
     },
 

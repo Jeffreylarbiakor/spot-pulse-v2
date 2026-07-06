@@ -7,16 +7,61 @@
   "reportingMonth": "Jun 2026",
   "clusters": [
     {
-      "name": "Northern & Overseas",
-      "rc": "Getrude Akunlibe",
+      "name": "Volta",
+      "rc": "Cynthia Mawuena Tetteh",
       "rcId": "rc-001",
       "spots": [
         {
-          "id": "bimbilla",
-          "name": "Bimbilla Spot",
-          "community": "Bimbilla",
-          "district": "Nanumba North",
-          "region": "Northern",
+          "id": "agbledomi",
+          "name": "Agbledomi Spot",
+          "community": "Agbledomi",
+          "district": "Agortime-Ziope",
+          "region": "Volta",
+          "year": 2020,
+          "programmes": [
+            "EduKidz",
+            "DigiLit"
+          ],
+          "pillars": {
+            "access": 16,
+            "engagement": 12,
+            "support": 16,
+            "governance": 19
+          },
+          "trend": [
+            63,
+            67,
+            null
+          ]
+        },
+        {
+          "id": "atsata-bame",
+          "name": "Atsata Bame Spot",
+          "community": "Atsata Bame",
+          "district": "Volta Region",
+          "region": "Volta",
+          "year": 2021,
+          "programmes": [
+            "EduKidz"
+          ],
+          "pillars": {
+            "access": 16,
+            "engagement": 12,
+            "support": 16,
+            "governance": 19
+          },
+          "trend": [
+            63,
+            67,
+            null
+          ]
+        },
+        {
+          "id": "atanve",
+          "name": "Atanve Spot",
+          "community": "Atanve",
+          "district": "Agortime-Ziope",
+          "region": "Volta",
           "year": 2019,
           "programmes": [
             "EduKidz",
@@ -35,36 +80,83 @@
           ]
         },
         {
-          "id": "dulugu",
-          "name": "Dulugu Spot",
-          "community": "Dulugu",
-          "district": "Tolon District",
-          "region": "Northern",
-          "year": 2017,
+          "id": "dodome-awuiasu",
+          "name": "Dodome Awuiasu Spot",
+          "community": "Dodome Awuiasu",
+          "district": "Akatsi North",
+          "region": "Volta",
+          "year": 2021,
           "programmes": [
             "EduKidz",
-            "DigiLit",
             "EcoSTEM"
           ],
           "pillars": {
-            "access": 19,
-            "engagement": 15,
-            "support": 20,
-            "governance": 23
+            "access": 16,
+            "engagement": 12,
+            "support": 16,
+            "governance": 19
           },
           "trend": [
-            77,
-            81,
+            63,
+            67,
             null
           ]
         },
         {
-          "id": "kalpohin",
-          "name": "Kalpohin Spot",
-          "community": "Kalpohin",
-          "district": "Savelugu Municipal",
-          "region": "Northern",
-          "year": 2019,
+          "id": "metstrikasa",
+          "name": "Metstrikasa Spot",
+          "community": "Metstrikasa",
+          "district": "Ketu North",
+          "region": "Volta",
+          "year": 2021,
+          "programmes": [
+            "EduKidz",
+            "DigiLit"
+          ],
+          "pillars": {
+            "access": 16,
+            "engagement": 12,
+            "support": 16,
+            "governance": 19
+          },
+          "trend": [
+            63,
+            67,
+            null
+          ]
+        },
+        {
+          "id": "posmonu",
+          "name": "Posmonu Spot",
+          "community": "Ave Posmonu",
+          "district": "Central Tongu",
+          "region": "Volta",
+          "year": 2016,
+          "programmes": [
+            "EduKidz",
+            "DigiLit",
+            "EcoSTEM",
+            "Ignite Equity"
+          ],
+          "pillars": {
+            "access": 22,
+            "engagement": 17,
+            "support": 22,
+            "governance": 27
+          },
+          "trend": [
+            88,
+            92,
+            null
+          ]
+        },
+        {
+          "id": "takuve",
+          "name": "Takuve Spot",
+          "community": "Takuve",
+          "district": "Agortime-Ziope",
+          "region": "Volta",
+          "year": 2018,
           "programmes": [
             "EduKidz",
             "DigiLit",
@@ -83,12 +175,12 @@
           ]
         },
         {
-          "id": "sakasaka",
-          "name": "Sakasaka Spot",
-          "community": "Sakasaka",
-          "district": "Tamale Metro",
-          "region": "Northern",
-          "year": 2018,
+          "id": "wodome-akatsi",
+          "name": "Wodome Akatsi Spot",
+          "community": "Wodome",
+          "district": "Akatsi South",
+          "region": "Volta",
+          "year": 2020,
           "programmes": [
             "EduKidz",
             "DigiLit"
@@ -106,146 +198,25 @@
           ]
         },
         {
-          "id": "savelugu",
-          "name": "Savelugu Spot",
-          "community": "Savelugu",
-          "district": "Savelugu Municipal",
-          "region": "Northern",
-          "year": 2019,
-          "programmes": [
-            "EduKidz"
-          ],
-          "pillars": {
-            "access": 16,
-            "engagement": 12,
-            "support": 16,
-            "governance": 19
-          },
-          "trend": [
-            63,
-            67,
-            null
-          ]
+          "id": "apegusu",
+          "name": "Apegusu Spot",
+          "community": "Apegusu",
+          "district": "Volta Region",
+          "region": "Volta",
+          "inactive": true
         },
         {
-          "id": "zangbalun",
-          "name": "Zangbalun Spot",
-          "community": "Zangbalun",
-          "district": "Kumbungu District",
-          "region": "Northern",
-          "year": 2022,
-          "programmes": [
-            "EduKidz",
-            "DigiLit"
-          ],
-          "pillars": {
-            "access": 16,
-            "engagement": 12,
-            "support": 16,
-            "governance": 19
-          },
-          "trend": [
-            63,
-            67,
-            null
-          ]
-        },
-        {
-          "id": "gambibgo",
-          "name": "Gambibgo Spot",
-          "community": "Gambibgo",
-          "district": "Gambibgo District",
-          "region": "Upper East",
-          "year": 2024,
-          "programmes": [
-            "EduKidz"
-          ],
-          "pillars": {
-            "access": 11,
-            "engagement": 8,
-            "support": 11,
-            "governance": 14
-          },
-          "trend": [
-            44,
-            48,
-            null
-          ],
-          "induction": true
-        },
-        {
-          "id": "katanga-zuarungu",
-          "name": "Katanga-Zuarungu Spot",
-          "community": "Katanga-Zuarungu",
-          "district": "Bolgatanga Municipal",
-          "region": "Upper East",
-          "year": 2024,
-          "programmes": [
-            "EduKidz"
-          ],
-          "pillars": {
-            "access": 11,
-            "engagement": 8,
-            "support": 11,
-            "governance": 14
-          },
-          "trend": [
-            44,
-            48,
-            null
-          ],
-          "induction": true
-        },
-        {
-          "id": "kumbungu-zamigu",
-          "name": "Kumbungu Zamigu Spot",
-          "community": "Kumbungu Zamigu",
-          "district": "Kumbungu District",
-          "region": "Northern",
-          "year": 2024,
-          "programmes": [
-            "EduKidz"
-          ],
-          "pillars": {
-            "access": 11,
-            "engagement": 8,
-            "support": 11,
-            "governance": 14
-          },
-          "trend": [
-            44,
-            48,
-            null
-          ],
-          "induction": true
-        },
-        {
-          "id": "piisie",
-          "name": "Piisie Spot",
-          "community": "Piisie",
-          "district": "Kumbungu District",
-          "region": "Northern",
-          "year": 2024,
-          "programmes": [
-            "EduKidz"
-          ],
-          "pillars": {
-            "access": 11,
-            "engagement": 8,
-            "support": 11,
-            "governance": 14
-          },
-          "trend": [
-            44,
-            48,
-            null
-          ],
-          "induction": true
+          "id": "kodzi",
+          "name": "Kodzi Spot",
+          "community": "Kodzi",
+          "district": "Volta Region",
+          "region": "Volta",
+          "inactive": true
         }
       ]
     },
     {
-      "name": "Middle Cluster (Ashanti, Bono & Ahafo)",
+      "name": "Middle",
       "rc": "Yahya Seidu",
       "rcId": "rc-002",
       "spots": [
@@ -551,75 +522,6 @@
           ]
         },
         {
-          "id": "dormaa-aboabo",
-          "name": "Dormaa Ahenkro Aboabo No.4",
-          "community": "Dormaa Ahenkro",
-          "district": "Dormaa Central",
-          "region": "Bono",
-          "year": 2024,
-          "programmes": [
-            "EduKidz"
-          ],
-          "pillars": {
-            "access": 11,
-            "engagement": 8,
-            "support": 11,
-            "governance": 14
-          },
-          "trend": [
-            44,
-            48,
-            null
-          ],
-          "induction": true
-        },
-        {
-          "id": "kato-berekum",
-          "name": "Kato-Berekum Spot",
-          "community": "Kato",
-          "district": "Berekum East",
-          "region": "Bono",
-          "year": 2024,
-          "programmes": [
-            "EduKidz"
-          ],
-          "pillars": {
-            "access": 11,
-            "engagement": 8,
-            "support": 11,
-            "governance": 14
-          },
-          "trend": [
-            44,
-            48,
-            null
-          ],
-          "induction": true
-        },
-        {
-          "id": "soko",
-          "name": "Soko Spot",
-          "community": "Soko",
-          "district": "Afigya Kwabre",
-          "region": "Ashanti",
-          "year": 2024,
-          "programmes": [
-            "EduKidz"
-          ],
-          "pillars": {
-            "access": 11,
-            "engagement": 8,
-            "support": 11,
-            "governance": 14
-          },
-          "trend": [
-            44,
-            48,
-            null
-          ],
-          "induction": true
-        },
-        {
           "id": "dichemso",
           "name": "Dichemso Spot",
           "community": "Dichemso",
@@ -638,9 +540,185 @@
       ]
     },
     {
+      "name": "Northern",
+      "rc": "Getrude Akunlibe",
+      "rcId": "rc-003",
+      "spots": [
+        {
+          "id": "bimbilla",
+          "name": "Bimbilla Spot",
+          "community": "Bimbilla",
+          "district": "Nanumba North",
+          "region": "Northern",
+          "year": 2019,
+          "programmes": [
+            "EduKidz",
+            "DigiLit"
+          ],
+          "pillars": {
+            "access": 16,
+            "engagement": 12,
+            "support": 16,
+            "governance": 19
+          },
+          "trend": [
+            63,
+            67,
+            null
+          ]
+        },
+        {
+          "id": "dulugu",
+          "name": "Dulugu Spot",
+          "community": "Dulugu",
+          "district": "Tolon District",
+          "region": "Northern",
+          "year": 2017,
+          "programmes": [
+            "EduKidz",
+            "DigiLit",
+            "EcoSTEM"
+          ],
+          "pillars": {
+            "access": 19,
+            "engagement": 15,
+            "support": 20,
+            "governance": 23
+          },
+          "trend": [
+            77,
+            81,
+            null
+          ]
+        },
+        {
+          "id": "joska",
+          "name": "Joska Spot",
+          "community": "Joska",
+          "district": "Mavoko Sub-County",
+          "region": "Machakos (Kenya)",
+          "year": 2023,
+          "programmes": [
+            "EduKidz"
+          ],
+          "pillars": {
+            "access": 16,
+            "engagement": 12,
+            "support": 16,
+            "governance": 19
+          },
+          "trend": [
+            63,
+            67,
+            null
+          ]
+        },
+        {
+          "id": "kalpohin",
+          "name": "Kalpohin Spot",
+          "community": "Kalpohin",
+          "district": "Savelugu Municipal",
+          "region": "Northern",
+          "year": 2019,
+          "programmes": [
+            "EduKidz",
+            "DigiLit",
+            "Ignite Equity"
+          ],
+          "pillars": {
+            "access": 19,
+            "engagement": 15,
+            "support": 20,
+            "governance": 23
+          },
+          "trend": [
+            77,
+            81,
+            null
+          ]
+        },
+        {
+          "id": "sakasaka",
+          "name": "Sakasaka Spot",
+          "community": "Sakasaka",
+          "district": "Tamale Metro",
+          "region": "Northern",
+          "year": 2018,
+          "programmes": [
+            "EduKidz",
+            "DigiLit"
+          ],
+          "pillars": {
+            "access": 16,
+            "engagement": 12,
+            "support": 16,
+            "governance": 19
+          },
+          "trend": [
+            63,
+            67,
+            null
+          ]
+        },
+        {
+          "id": "savelugu",
+          "name": "Savelugu Spot",
+          "community": "Savelugu",
+          "district": "Savelugu Municipal",
+          "region": "Northern",
+          "year": 2019,
+          "programmes": [
+            "EduKidz"
+          ],
+          "pillars": {
+            "access": 16,
+            "engagement": 12,
+            "support": 16,
+            "governance": 19
+          },
+          "trend": [
+            63,
+            67,
+            null
+          ]
+        },
+        {
+          "id": "zangbalun",
+          "name": "Zangbalun Spot",
+          "community": "Zangbalun",
+          "district": "Kumbungu District",
+          "region": "Northern",
+          "year": 2022,
+          "programmes": [
+            "EduKidz",
+            "DigiLit"
+          ],
+          "pillars": {
+            "access": 16,
+            "engagement": 12,
+            "support": 16,
+            "governance": 19
+          },
+          "trend": [
+            63,
+            67,
+            null
+          ]
+        },
+        {
+          "id": "badili-zone",
+          "name": "Badili Zone Spot",
+          "community": "Badili",
+          "district": "Nairobi County",
+          "region": "Nairobi (Kenya)",
+          "inactive": true
+        }
+      ]
+    },
+    {
       "name": "Central/Western",
       "rc": "Abdul Wadud Suleiman",
-      "rcId": "rc-003",
+      "rcId": "rc-004",
       "spots": [
         {
           "id": "ampatano",
@@ -896,50 +974,26 @@
           ]
         },
         {
-          "id": "asemasa",
-          "name": "Asemasa Spot",
-          "community": "Butre",
-          "district": "Ahanta West",
-          "region": "Western",
-          "year": 2024,
+          "id": "teshie",
+          "name": "Teshie Spot",
+          "community": "Teshie",
+          "district": "Ledzokuku",
+          "region": "Greater Accra",
+          "year": 2025,
           "programmes": [
             "EduKidz"
           ],
           "pillars": {
-            "access": 11,
-            "engagement": 8,
-            "support": 11,
-            "governance": 14
+            "access": 16,
+            "engagement": 12,
+            "support": 16,
+            "governance": 19
           },
           "trend": [
-            44,
-            48,
+            63,
+            67,
             null
-          ],
-          "induction": true
-        },
-        {
-          "id": "kejabil",
-          "name": "Kejabil Spot",
-          "community": "Kejabil",
-          "district": "Ahanta West",
-          "region": "Western",
-          "year": 2024,
-          "programmes": [
-            "EduKidz"
-          ],
-          "pillars": {
-            "access": 11,
-            "engagement": 8,
-            "support": 11,
-            "governance": 14
-          },
-          "trend": [
-            44,
-            48,
-            null
-          ],
-          "induction": true
+          ]
         },
         {
           "id": "cape-3-points",
@@ -960,196 +1014,10 @@
       ]
     },
     {
-      "name": "Volta",
-      "rc": "Cynthia Mawuena Tetteh",
-      "rcId": "rc-004",
+      "name": "New Spots",
+      "rc": "Abdul-Malik Iddrisu",
+      "rcId": "rc-005",
       "spots": [
-        {
-          "id": "agbledomi",
-          "name": "Agbledomi Spot",
-          "community": "Agbledomi",
-          "district": "Agortime-Ziope",
-          "region": "Volta",
-          "year": 2020,
-          "programmes": [
-            "EduKidz",
-            "DigiLit"
-          ],
-          "pillars": {
-            "access": 16,
-            "engagement": 12,
-            "support": 16,
-            "governance": 19
-          },
-          "trend": [
-            63,
-            67,
-            null
-          ]
-        },
-        {
-          "id": "atsata-bame",
-          "name": "Atsata Bame Spot",
-          "community": "Atsata Bame",
-          "district": "Volta Region",
-          "region": "Volta",
-          "year": 2021,
-          "programmes": [
-            "EduKidz"
-          ],
-          "pillars": {
-            "access": 16,
-            "engagement": 12,
-            "support": 16,
-            "governance": 19
-          },
-          "trend": [
-            63,
-            67,
-            null
-          ]
-        },
-        {
-          "id": "atanve",
-          "name": "Atanve Spot",
-          "community": "Atanve",
-          "district": "Agortime-Ziope",
-          "region": "Volta",
-          "year": 2019,
-          "programmes": [
-            "EduKidz",
-            "DigiLit"
-          ],
-          "pillars": {
-            "access": 16,
-            "engagement": 12,
-            "support": 16,
-            "governance": 19
-          },
-          "trend": [
-            63,
-            67,
-            null
-          ]
-        },
-        {
-          "id": "dodome-awuiasu",
-          "name": "Dodome Awuiasu Spot",
-          "community": "Dodome Awuiasu",
-          "district": "Akatsi North",
-          "region": "Volta",
-          "year": 2021,
-          "programmes": [
-            "EduKidz",
-            "EcoSTEM"
-          ],
-          "pillars": {
-            "access": 16,
-            "engagement": 12,
-            "support": 16,
-            "governance": 19
-          },
-          "trend": [
-            63,
-            67,
-            null
-          ]
-        },
-        {
-          "id": "metstrikasa",
-          "name": "Metstrikasa Spot",
-          "community": "Metstrikasa",
-          "district": "Ketu North",
-          "region": "Volta",
-          "year": 2021,
-          "programmes": [
-            "EduKidz",
-            "DigiLit"
-          ],
-          "pillars": {
-            "access": 16,
-            "engagement": 12,
-            "support": 16,
-            "governance": 19
-          },
-          "trend": [
-            63,
-            67,
-            null
-          ]
-        },
-        {
-          "id": "posmonu",
-          "name": "Posmonu Spot",
-          "community": "Ave Posmonu",
-          "district": "Central Tongu",
-          "region": "Volta",
-          "year": 2016,
-          "programmes": [
-            "EduKidz",
-            "DigiLit",
-            "EcoSTEM",
-            "Ignite Equity"
-          ],
-          "pillars": {
-            "access": 22,
-            "engagement": 17,
-            "support": 22,
-            "governance": 27
-          },
-          "trend": [
-            88,
-            92,
-            null
-          ]
-        },
-        {
-          "id": "takuve",
-          "name": "Takuve Spot",
-          "community": "Takuve",
-          "district": "Agortime-Ziope",
-          "region": "Volta",
-          "year": 2018,
-          "programmes": [
-            "EduKidz",
-            "DigiLit",
-            "Ignite Equity"
-          ],
-          "pillars": {
-            "access": 19,
-            "engagement": 15,
-            "support": 20,
-            "governance": 23
-          },
-          "trend": [
-            77,
-            81,
-            null
-          ]
-        },
-        {
-          "id": "wodome-akatsi",
-          "name": "Wodome Akatsi Spot",
-          "community": "Wodome",
-          "district": "Akatsi South",
-          "region": "Volta",
-          "year": 2020,
-          "programmes": [
-            "EduKidz",
-            "DigiLit"
-          ],
-          "pillars": {
-            "access": 16,
-            "engagement": 12,
-            "support": 16,
-            "governance": 19
-          },
-          "trend": [
-            63,
-            67,
-            null
-          ]
-        },
         {
           "id": "abutia",
           "name": "Abutia Spot",
@@ -1197,86 +1065,211 @@
           "induction": true
         },
         {
-          "id": "apegusu",
-          "name": "Apegusu Spot",
-          "community": "Apegusu",
-          "district": "Volta Region",
-          "region": "Volta",
-          "inactive": true
-        },
-        {
-          "id": "kodzi",
-          "name": "Kodzi Spot",
-          "community": "Kodzi",
-          "district": "Volta Region",
-          "region": "Volta",
-          "inactive": true
-        }
-      ]
-    },
-    {
-      "name": "Eastern & Greater Accra",
-      "rc": "Kwabena Owusu",
-      "rcId": "rc-005",
-      "spots": [
-        {
-          "id": "teshie",
-          "name": "Teshie Spot",
-          "community": "Teshie",
-          "district": "Ledzokuku",
-          "region": "Greater Accra",
-          "year": 2025,
+          "id": "dormaa-aboabo",
+          "name": "Dormaa Ahenkro Aboabo No.4",
+          "community": "Dormaa Ahenkro",
+          "district": "Dormaa Central",
+          "region": "Bono",
+          "year": 2024,
           "programmes": [
             "EduKidz"
           ],
           "pillars": {
-            "access": 16,
-            "engagement": 12,
-            "support": 16,
-            "governance": 19
+            "access": 11,
+            "engagement": 8,
+            "support": 11,
+            "governance": 14
           },
           "trend": [
-            63,
-            67,
+            44,
+            48,
             null
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Kenya",
-      "rc": "Kenya Coordinator",
-      "rcId": "rc-006",
-      "spots": [
+          ],
+          "induction": true
+        },
         {
-          "id": "joska",
-          "name": "Joska Spot",
-          "community": "Joska",
-          "district": "Mavoko Sub-County",
-          "region": "Machakos (Kenya)",
-          "year": 2023,
+          "id": "kato-berekum",
+          "name": "Kato-Berekum Spot",
+          "community": "Kato",
+          "district": "Berekum East",
+          "region": "Bono",
+          "year": 2024,
           "programmes": [
             "EduKidz"
           ],
           "pillars": {
-            "access": 16,
-            "engagement": 12,
-            "support": 16,
-            "governance": 19
+            "access": 11,
+            "engagement": 8,
+            "support": 11,
+            "governance": 14
           },
           "trend": [
-            63,
-            67,
+            44,
+            48,
             null
-          ]
+          ],
+          "induction": true
         },
         {
-          "id": "badili-zone",
-          "name": "Badili Zone Spot",
-          "community": "Badili",
-          "district": "Nairobi County",
-          "region": "Nairobi (Kenya)",
-          "inactive": true
+          "id": "soko",
+          "name": "Soko Spot",
+          "community": "Soko",
+          "district": "Afigya Kwabre",
+          "region": "Ashanti",
+          "year": 2024,
+          "programmes": [
+            "EduKidz"
+          ],
+          "pillars": {
+            "access": 11,
+            "engagement": 8,
+            "support": 11,
+            "governance": 14
+          },
+          "trend": [
+            44,
+            48,
+            null
+          ],
+          "induction": true
+        },
+        {
+          "id": "asemasa",
+          "name": "Asemasa Spot",
+          "community": "Butre",
+          "district": "Ahanta West",
+          "region": "Western",
+          "year": 2024,
+          "programmes": [
+            "EduKidz"
+          ],
+          "pillars": {
+            "access": 11,
+            "engagement": 8,
+            "support": 11,
+            "governance": 14
+          },
+          "trend": [
+            44,
+            48,
+            null
+          ],
+          "induction": true
+        },
+        {
+          "id": "kejabil",
+          "name": "Kejabil Spot",
+          "community": "Kejabil",
+          "district": "Ahanta West",
+          "region": "Western",
+          "year": 2024,
+          "programmes": [
+            "EduKidz"
+          ],
+          "pillars": {
+            "access": 11,
+            "engagement": 8,
+            "support": 11,
+            "governance": 14
+          },
+          "trend": [
+            44,
+            48,
+            null
+          ],
+          "induction": true
+        },
+        {
+          "id": "gambibgo",
+          "name": "Gambibgo Spot",
+          "community": "Gambibgo",
+          "district": "Gambibgo District",
+          "region": "Upper East",
+          "year": 2024,
+          "programmes": [
+            "EduKidz"
+          ],
+          "pillars": {
+            "access": 11,
+            "engagement": 8,
+            "support": 11,
+            "governance": 14
+          },
+          "trend": [
+            44,
+            48,
+            null
+          ],
+          "induction": true
+        },
+        {
+          "id": "katanga-zuarungu",
+          "name": "Katanga-Zuarungu Spot",
+          "community": "Katanga-Zuarungu",
+          "district": "Bolgatanga Municipal",
+          "region": "Upper East",
+          "year": 2024,
+          "programmes": [
+            "EduKidz"
+          ],
+          "pillars": {
+            "access": 11,
+            "engagement": 8,
+            "support": 11,
+            "governance": 14
+          },
+          "trend": [
+            44,
+            48,
+            null
+          ],
+          "induction": true
+        },
+        {
+          "id": "kumbungu-zamigu",
+          "name": "Kumbungu Zamigu Spot",
+          "community": "Kumbungu Zamigu",
+          "district": "Kumbungu District",
+          "region": "Northern",
+          "year": 2024,
+          "programmes": [
+            "EduKidz"
+          ],
+          "pillars": {
+            "access": 11,
+            "engagement": 8,
+            "support": 11,
+            "governance": 14
+          },
+          "trend": [
+            44,
+            48,
+            null
+          ],
+          "induction": true
+        },
+        {
+          "id": "piisie",
+          "name": "Piisie Spot",
+          "community": "Piisie",
+          "district": "Kumbungu District",
+          "region": "Northern",
+          "year": 2024,
+          "programmes": [
+            "EduKidz"
+          ],
+          "pillars": {
+            "access": 11,
+            "engagement": 8,
+            "support": 11,
+            "governance": 14
+          },
+          "trend": [
+            44,
+            48,
+            null
+          ],
+          "induction": true
         }
       ]
     }
