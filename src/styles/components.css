@@ -230,6 +230,8 @@ body {
 }
 .tag.induct { background: var(--amber-50); color: var(--amber-700); }
 .tag.prog { background: var(--ink-100); color: var(--ink-700); }
+.tag.legacy { background: var(--ink-100); color: var(--ink-400); }
+.spotrow.legacy { opacity: 0.55; cursor: default; }
 
 /* ── Cluster header ── */
 .cluster-h {

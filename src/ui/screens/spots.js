@@ -1,6 +1,6 @@
 import { getClustersSync as getClusters } from '../../data/store.js';
 import { getSession } from '../../auth/session.js';
-import { allSpots } from '../../../shared/core/selectors.js';
+import { allSpots, activeSpots } from '../../../shared/core/selectors.js';
 import { rag } from '../../../shared/core/rag.js';
 import { esc, icon, disclaimerHTML } from '../helpers.js';
 import { openSub } from '../router.js';
@@ -11,6 +11,15 @@ function scoreOf(s) {
 }
 
 function spotRowHTML(s) {
+  if (s.inactive) {
+    return `<div class="spotrow legacy" aria-label="${esc(s.name)}, legacy spot">
+      <div class="meta">
+        <div class="sn">${esc(s.name)} <span class="tag legacy">Legacy</span></div>
+        <div class="reg">${esc(s.community)} · ${esc(s.region)}</div>
+      </div>
+      <span class="chip grey">Inactive</span>
+    </div>`;
+  }
   const sc = scoreOf(s);
   const r = sc != null ? rag(sc) : null;
   const chip = sc != null
@@ -32,7 +41,7 @@ export function renderSpots() {
   const clusters = session.mode === 'rc'
     ? allClusters.filter(c => c.rcId === session.rc.clusterId)
     : allClusters;
-  const spots = allSpots(clusters);
+  const spots = activeSpots(clusters);
 
   const el = document.createElement('div');
   el.className = 'view pad-bottom';

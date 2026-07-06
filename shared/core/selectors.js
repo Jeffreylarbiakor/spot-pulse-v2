@@ -8,8 +8,12 @@ export function allSpots(clusters) {
   return clusters.flatMap(c => c.spots);
 }
 
+export function activeSpots(clusters) {
+  return allSpots(clusters).filter(s => !s.inactive);
+}
+
 export function networkStats(clusters, m) {
-  const spots = allSpots(clusters);
+  const spots = activeSpots(clusters);
   const reporting = spots.filter(s => s.trend[m] != null);
   let g = 0, a = 0, r = 0;
   reporting.forEach(s => {
@@ -28,7 +32,7 @@ export function networkStats(clusters, m) {
 
 export function clusterAvgs(clusters, m) {
   return clusters.map(c => {
-    const rep = c.spots.filter(s => s.trend[m] != null).map(s => s.trend[m]);
+    const rep = c.spots.filter(s => !s.inactive && s.trend[m] != null).map(s => s.trend[m]);
     return [c.name, avg(rep)];
   });
 }

@@ -33,10 +33,12 @@ export function renderPicker() {
   el.id = 'view';
   el.tabIndex = -1;
 
-  const list = clusters.map(c =>
-    `<h2 class="cluster-h"><span class="name">${esc(c.name)}</span><span class="rc">RC · ${esc(c.rc)}</span></h2>
-     ${c.spots.map(checkinRowHTML).join('')}`
-  ).join('');
+  const list = clusters.map(c => {
+    const active = c.spots.filter(s => !s.inactive);
+    if (!active.length) return '';
+    return `<h2 class="cluster-h"><span class="name">${esc(c.name)}</span><span class="rc">RC · ${esc(c.rc)}</span></h2>
+     ${active.map(checkinRowHTML).join('')}`;
+  }).join('');
 
   el.innerHTML = `
     <h1 class="h-screen" style="margin:2px 4px 4px">New check-in</h1>

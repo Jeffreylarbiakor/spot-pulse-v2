@@ -22,10 +22,12 @@ export function mergeSubmissions(clusters, submissions, months) {
   return clusters.map(cluster => ({
     ...cluster,
     spots: cluster.spots.map(spot => {
+      if (spot.inactive) return spot;
+
       const trend = months.map((label, i) => {
         const sub = latest.get(`${spot.id}:${monthToKey(label)}`);
         if (sub) return scoreOf(computePillars(sub.inputs));
-        return spot.trend[i];
+        return spot.trend ? spot.trend[i] : null;
       });
 
       const latestMonthKey = monthToKey(months[months.length - 1]);
