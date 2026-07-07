@@ -105,6 +105,9 @@ export function renderSuccess(spotId) {
 
   window.addEventListener('spot-pulse:sync-changed', onSyncChanged);
 
+  // Kick off sync immediately so the badge resolves without user interaction
+  syncPending();
+
   // Remove listener when this screen leaves the DOM
   const observer = new MutationObserver(() => {
     if (!document.contains(el)) {
