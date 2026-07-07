@@ -107,7 +107,7 @@ const seed = {
 
     // ── 3. Northern ──────────────────────────────────────────────────────────
     {
-      name: 'Northern',
+      name: 'Northern/Overseas',
       rc: 'Getrude Akunlibe',
       rcId: 'rc-003',
       spots: [
