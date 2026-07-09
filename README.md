@@ -88,5 +88,5 @@ To try RC mode: tap **Sign in as RC →** in the amber session strip and choose 
 - All metrics are illustrative — no live EduSpots data in this build.
 - Sign-in is a stub (pick from a list); production would use a real identity provider.
 - Scoring weights are a reference implementation; exact curves pending EduSpots confirmation.
-- RAG Red/Amber boundary is 50 — see PRD §6.2.
+- RAG Red/Amber boundary is 50 — see PRD 6.2.
 - SMS gateway integration (Africa's Talking / Twilio webhook wiring) is not configured; the `/api/sms` endpoint is ready to receive webhooks once a number is provisioned.
